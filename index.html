@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramtin Khorshidi - Barista & Aspiring React Developer</title>
+    <meta name="description" content="Personal webpage of Ramtin Khorshidi, a barista at Good Earth Coffee House learning React JS to become a developer">
+    <!-- Tailwind CSS CDN for development only -->
+    <!-- For production, install Tailwind CSS via npm and use Tailwind CLI: https://tailwindcss.com/docs/installation -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: "#FDF6E3",    // Soft cream background
+                        primary: "#355E3B",  // Forest green (coffee plant)
+                        secondary: "#61DAFB", // React blue
+                        accent: "#E5E7EB",   // Light gray for cards/hover
+                        footer: "#2F4F4F",   // Darker green for footer
+                        lightGreen: "#D1E7DD", // Light green for Coffee Craft
+                        lightBlue: "#D1ECF1",  // Light blue for Web Development
+                        lightRed: "#F8D7DA"    // Light red for Soft Skills
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDF6E3; /* Cream background */
+            background-image: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.05) 50%,
+                transparent 50%
+            );
+            background-size: 20px 20px; /* Thin stripes, 20px wide */
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="bg-cream shadow-sm">
+        <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div class="text-2xl font-bold text-primary">Ramtin Khorshidi</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-700 hover:text-secondary transition">About</a>
+                <a href="#experience" class="text-gray-700 hover:text-secondary transition">Experience</a>
+                <a href="#skills" class="text-gray-700 hover:text-secondary transition">Skills</a>
+                <a href="#contact" class="text-gray-700 hover:text-secondary transition">Contact</a>
+            </div>
+            <div class="flex items-center">
+                <button class="md:hidden text-gray-700" aria-label="Toggle Mobile Menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row items-center gap-12 mb-20">
+            <div class="md:w-1/2">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                    Hi, I'm <span class="text-primary">Ramtin</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-900">
+                    Barista by day, <span class="text-secondary">React learner</span> by night
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Currently crafting perfect coffee at Good Earth Coffee House while brewing my skills in React JS to become a frontend developer.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg transition">Contact Me</a>
+                    <a href="#skills" class="border border-primary text-primary hover:bg-secondary hover:text-white px-6 py-3 rounded-lg transition">My Skills</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img 
+                    src="images/ramtin-portrait.jpg" 
+                    alt="Ramtin Khorshidi pulling an espresso shot" 
+                    class="w-full rounded-lg shadow-xl hover:scale-105 transition-transform duration-300"
+                    width="600"
+                    height="600"
+                    loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600&q=80'"
+                />
+                <button id="secret-button" class="mt-4 bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                    If you click this button, a big secret about me will be revealed.
+                </button>
+                <div id="secret-box" class="hidden mt-4 bg-accent border border-primary p-4 rounded-lg text-gray-800 italic shadow-md">
+                    You're gravely mistaken if you think a big secret about me will be revealed; I'm a very secretive person.
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="mb-20">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">About Me</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <img 
+                    src="images/coffee-shop.jpg" 
+                    alt="Coffee shop environment" 
+                    class="w-full h-64 object-cover rounded-lg mb-6 hover:scale-105 transition-transform duration-300"
+                    width="1200"
+                    height="400"
+                    loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80'"
+                />
+                <p class="text-lg text-gray-700 mb-6">
+                    I'm Ramtin Khorshidi, a passionate barista with a love for technology. While I currently create exceptional coffee experiences at Good Earth Coffee House, I'm on an exciting journey to transition into web development.
+                </p>
+                <p class="text-lg text-gray-700 mb-6">
+                    My fascination with technology and problem-solving led me to discover React JS, and I've been hooked ever since. I believe the same attention to detail that makes me a great barista will help me become an excellent developer.
+                </p>
+                <p class="text-lg text-gray-700">
+                    When I'm not pulling espresso shots or coding, you can find me exploring new coffee brewing techniques or contributing to open-source projects to sharpen my skills.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mb-20">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">My Experience</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                            <i class="fas fa-coffee text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Barista</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2 font-semibold">Good Earth Coffee House</p>
+                    <p class="text-gray-500 mb-4">2021 - Present</p>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <li>Prepare and serve specialty coffee beverages</li>
+                        <li>Maintain high standards of customer service</li>
+                        <li>Train new staff on coffee preparation techniques</li>
+                        <li>Manage inventory and equipment maintenance</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary bg-opacity-10 p-3 rounded-full mr-4">
+                            <i class="fab fa-react text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Aspiring React Developer</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2 font-semibold">Self-Study</p>
+                    <p class="text-gray-500 mb-4">2023 - Present</p>
+                    <img 
+                        src="images/react-project.jpeg" 
+                        alt="React project screenshot" 
+                        class="w-full h-48 object-contain rounded-lg mb-4 hover:scale-105 transition-transform duration-300"
+                        width="600"
+                        height="400"
+                        loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1537432372469-8e714e4642fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80'"
+                    />
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <li>Learning React JS through online courses and tutorials</li>
+                        <li>Building personal projects to apply knowledge</li>
+                        <li>Contributing to open-source projects</li>
+                        <li>Participating in developer communities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-20">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">My Skills</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-lightGreen p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-primary">Coffee Craft</h3>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Espresso preparation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Latte art</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Customer service</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Equipment maintenance</span>
+                        </li>
+                    </ul>
+                    <div class="bg-accent border border-primary p-4 rounded-lg text-gray-800 italic text-sm">
+                        Baking pastries and making all kinds of hot and cold sandwiches.
+                    </div>
+                </div>
+                <div class="bg-lightBlue p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-secondary">Web Development</h3>
+                    <img 
+                        src="images/coding-setup.jpg" 
+                        alt="Coding setup with laptop and code editor" 
+                        class="w-full h-40 object-cover rounded-lg mb-4 hover:scale-105 transition-transform duration-300"
+                        width="600"
+                        height="300"
+                        loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1516321310764-8d9c896fdbe9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300&q=80'"
+                    />
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            <span>HTML5 & CSS3</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            <span>JavaScript (ES6+)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            <span>React JS</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            <span>Git & GitHub</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-lightRed p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-gray-700">Soft Skills</h3>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-gray-700 mr-2"></i>
+                            <span>Teamwork</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-gray-700 mr-2"></i>
+                            <span>Problem-solving</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-gray-700 mr-2"></i>
+                            <span>Attention to detail</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-gray-700 mr-2"></i>
+                            <span>Time management</span>
+                        </li>
+                    </ul>
+                    <div class="bg-accent border border-primary p-4 rounded-lg text-gray-800 italic text-sm">
+                        My soft skills? Way beyond what you’d guess! I’ve got a killer background in acting and stage performance that sets me apart from your average desk jockey. I can sell a company or product like nobody’s business, bringing some serious flair to the table.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-20">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Get In Touch</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 mb-2">Name</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                            placeholder="Your name"
+                        >
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 mb-2">Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                            placeholder="Your email"
+                        >
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 mb-2">Message</label>
+                        <textarea 
+                            id="message" 
+                            rows="5"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                            placeholder="Your message"
+                        ></textarea>
+                    </div>
+                    <button 
+                        type="submit" 
+                        class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg transition w-full"
+                    >
+                        Send Message
+                    </button>
+                </form>
+                <div class="mt-8 flex justify-center space-x-6">
+                    <a href="https://www.linkedin.com/in/ramtin-khorshidi-23aa482a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-gray-600 hover:text-secondary transition" id="linkedin-link">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/your-username" target="_blank" class="text-gray-600 hover:text-secondary transition">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://twitter.com/your-username" target="_blank" class="text-gray-600 hover:text-secondary transition">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rami.momti?igsh=MWJ0angzazgzNGh5Nw==" target="_blank" class="text-gray-600 hover:text-secondary transition" id="instagram-link">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-footer text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2 text-white">Ramtin Khorshidi</h3>
+                    <p class="text-gray-300">Barista & Aspiring React Developer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#about" class="text-gray-300 hover:text-secondary transition">About</a>
+                    <a href="#experience" class="text-gray-300 hover:text-secondary transition">Experience</a>
+                    <a href="#skills" class="text-gray-300 hover:text-secondary transition">Skills</a>
+                    <a href="#contact" class="text-gray-300 hover:text-secondary transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
+                <p>© 2025 Ramtin Khorshidi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.querySelector('.hidden.md\\:flex');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                    mobileMenu.classList.toggle('flex-col');
+                    mobileMenu.classList.toggle('absolute');
+                    mobileMenu.classList.toggle('top-20');
+                    mobileMenu.classList.toggle('right-4');
+                    mobileMenu.classList.toggle('bg-cream');
+                    mobileMenu.classList.toggle('p-4');
+                    mobileMenu.classList.toggle('rounded-lg');
+                    mobileMenu.classList.toggle('shadow-md');
+                    mobileMenu.classList.toggle('space-y-4');
+                    mobileMenu.classList.toggle('space-x-8');
+                });
+            }
+
+            // Smooth scrolling for valid anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                const targetId = anchor.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    anchor.addEventListener('click', e => {
+                        e.preventDefault();
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                }
+            });
+
+            // Real-time redirect for LinkedIn link
+            const linkedinLink = document.getElementById('linkedin-link');
+            if (linkedinLink) {
+                linkedinLink.addEventListener('click', () => {
+                    window.location.href = linkedinLink.href;
+                });
+            }
+
+            // Real-time redirect for Instagram link
+            const instagramLink = document.getElementById('instagram-link');
+            if (instagramLink) {
+                instagramLink.addEventListener('click', () => {
+                    window.location.href = instagramLink.href;
+                });
+            }
+
+            // Toggle secret box visibility
+            const secretButton = document.getElementById('secret-button');
+            const secretBox = document.getElementById('secret-box');
+            if (secretButton && secretBox) {
+                secretButton.addEventListener('click', () => {
+                    secretBox.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
