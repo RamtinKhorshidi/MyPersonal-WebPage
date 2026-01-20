@@ -1,0 +1,215 @@
+/* ThemeToggle.css */
+
+:root {
+    --dur: 500ms;
+}
+
+/* Container scaling to fit navbar */
+.toggle-scale-wrapper {
+    /* Physical dimensions in the flex layout */
+    width: 70px;
+    height: 35px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.toggle-wrapper {
+    /* The detailed component is 200x100, so we scale it down */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 100px;
+    transform: translate(-50%, -50%) scale(0.35);
+    /* Scale 200px down to 70px */
+
+    display: grid;
+    place-items: center;
+    perspective: 200px;
+    transform-style: preserve-3d;
+}
+
+/* The Stripes Container */
+.flexDiv {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    border-radius: 50px;
+    /* Shadow for depth */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.flexDiv div {
+    position: relative;
+    height: 100%;
+    width: 10%;
+
+    /* DEFAULT (LIGHT MODE / UNCHECKED) - Sunset/Madder Gradient */
+    /* Using your palette: Sunset Gold -> Pumpkin -> Burnt Orange */
+    background-image: linear-gradient(to right, #f2c879 0%, #fe7f2d 90%, #fe7f2d 100%);
+
+    perspective: 200px;
+    transform-style: preserve-3d;
+    transition: transform var(--dur) ease-in-out, background-image var(--dur) ease-in-out;
+
+    /* Ensure no gaps */
+    margin-left: -1px;
+    width: calc(10% + 2px);
+}
+
+/* Reset margins for first */
+/* Reset margins for first and add rounding */
+.flexDiv div:first-child {
+    margin-left: 0;
+    border-radius: 50px 0 0 50px;
+}
+
+/* Add rounding to last child */
+.flexDiv div:last-child {
+    border-radius: 0 50px 50px 0;
+}
+
+/* CHECKED STATE (DARK MODE) */
+.toggleMe:checked~.flexDiv div {
+    transform: rotateX(180deg);
+    /* Dark Mode Gradient: Egyptian Blue -> Federal Blue */
+    background-image: linear-gradient(to right, #28369e 0%, #050531 90%, #050531 100%);
+}
+
+.toggleMe:checked~.flexDiv div::after {
+    transform: rotateX(0deg) translateZ(calc(var(--dur) * 2));
+}
+
+/* The Input Trigger */
+.toggleMe {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 99;
+    position: absolute;
+    /* Ensure it covers the scaled area */
+    top: 0;
+    left: 0;
+}
+
+/* The Animated Orbs */
+.circle,
+.circleOther {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 50%;
+    transition: box-shadow var(--dur) ease-in-out;
+
+    animation: circleAnim var(--dur) linear forwards;
+    /* Default position (Unchecked) */
+    transform: translateZ(30px) translateX(-45px);
+}
+
+/* Circle 1: The SUN (Visible in Light Mode / Unchecked) */
+.circle {
+    /* Sun Gradient: Gold -> Pumpkin */
+    background: radial-gradient(circle at 30% 30%, #f2c879 0%, #fe7f2d 30%, #ea580c 100%);
+    box-shadow: 0 0 20px #fe7f2d;
+}
+
+/* Circle 2: The MOON (Visible in Dark Mode / Checked) */
+.circleOther {
+    /* Moon Gradient: Whiteish -> Slate */
+    background: radial-gradient(circle at 30% 30%, #ffffff 0%, #e2e8f0 30%, #94a3b8 100%);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    animation-name: circleAnimOther;
+    transform: translateZ(-30px) translateX(-45px);
+}
+
+/* Animation Triggers */
+.toggleMe:checked~.circle {
+    animation-name: circleReturn;
+    animation-play-state: running;
+}
+
+.toggleMe:checked~.circleOther {
+    animation-name: circleReturnOther;
+    animation-play-state: running;
+}
+
+/* Keyframes - Adapted to maintain Z-index logic */
+
+/* Move Sun to Back */
+@keyframes circleAnim {
+    0% {
+        transform: translateZ(30px) translateX(-50px);
+        z-index: 2;
+    }
+
+    50% {
+        transform: translateZ(0) translateX(0) translateY(35px) scale(0.8);
+    }
+
+    100% {
+        transform: translateZ(-30px) translateX(50px);
+        z-index: 0;
+    }
+}
+
+/* Bring Sun to Front */
+@keyframes circleReturn {
+    0% {
+        transform: translateZ(-30px) translateX(50px);
+        z-index: 0;
+    }
+
+    50% {
+        transform: translateZ(0) translateX(0) translateY(35px) scale(0.8);
+    }
+
+    100% {
+        transform: translateZ(30px) translateX(-50px);
+        z-index: 2;
+    }
+}
+
+/* Move Moon to Front */
+@keyframes circleAnimOther {
+    0% {
+        transform: translateZ(-30px) translateX(-50px);
+        z-index: 0;
+    }
+
+    50% {
+        transform: translateZ(0) translateX(0) translateY(-35px) scale(0.8);
+    }
+
+    100% {
+        transform: translateZ(30px) translateX(50px);
+        z-index: 2;
+    }
+}
+
+/* Move Moon to Back */
+@keyframes circleReturnOther {
+    0% {
+        transform: translateZ(30px) translateX(50px);
+        z-index: 2;
+    }
+
+    50% {
+        transform: translateZ(0) translateX(0) translateY(-35px) scale(0.8);
+    }
+
+    100% {
+        transform: translateZ(-30px) translateX(-50px);
+        z-index: 0;
+    }
+}
