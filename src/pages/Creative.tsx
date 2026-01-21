@@ -1,105 +1,130 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTheaterMasks, FaMusic, FaCoffee } from 'react-icons/fa';
 import { pageVariants, fadeInUp, staggerContainer, hoverScale } from '../utils/animations';
 import CreativeTitle from '../components/CreativeTitle';
 
 // Image Imports
-import acting1 from '../assets/images/acting-1.jpg';
-import acting2 from '../assets/images/acting-2.jpg';
-import actingGreen from '../assets/images/acting-green-mood.jpg';
-import actingClapper from '../assets/images/acting-clapperboard.jpg';
-import actingAwards from '../assets/images/acting-awards.jpg';
-import actingAwardCeremony from '../assets/images/acting-award-ceremony.jpg';
-import actingStage from '../assets/images/acting-stage-suit.jpg';
-import actingRedCarpet from '../assets/images/acting-red-carpet.jpg';
-import coffeeShop from '../assets/images/coffee-shop.jpg';
+import acting1 from '../assets/images/acting-1.webp';
+import acting2 from '../assets/images/acting-2.webp';
+import actingGreen from '../assets/images/acting-green-mood.webp';
+import actingClapper from '../assets/images/acting-clapperboard.webp';
+import actingAwards from '../assets/images/acting-awards.webp';
+import actingAwardCeremony from '../assets/images/acting-award-ceremony.webp';
+import actingStage from '../assets/images/acting-stage-suit.webp';
+import actingRedCarpet from '../assets/images/acting-red-carpet.webp';
+import coffeeShop from '../assets/images/coffee-shop.webp';
 
 // Placeholder content components
-const ActingContent = () => (
-    <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="show"
-        exit={{ opacity: 0, x: -20 }}
-        className="space-y-12"
-    >
-        {/* Intro Section */}
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-            <motion.div variants={fadeInUp} className="space-y-6">
-                <h3 className="text-2xl font-bold text-primary">The Stage</h3>
-                <p className="text-gray-300 leading-relaxed">
-                    Acting teaches empathy, presence, and the ability to listen—skills that directly translate to effective team collaboration and user-centric development.
-                    Currently freelancing with Armin Productions.
-                </p>
-                <div className="bg-surface p-6 rounded-lg border border-gray-800">
-                    <h4 className="font-bold text-white mb-2">Recent Roles</h4>
-                    <ul className="space-y-2 text-gray-400 text-sm">
-                        <li>• Character Development Workshop (2025)</li>
-                        <li>• "Foreign Homeland" - Lead Support (2024)</li>
-                        <li>• Improvisation Showcase (2023)</li>
-                    </ul>
-                </div>
-            </motion.div>
-            {/* Image Gallery */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {/* Row 1: Three Portraits */}
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingGreen} alt="Dramatic Green Light Performance" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={acting1} alt="Acting Headshot" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingStage} alt="Stage Performance" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
+const initialImages = [
+    { id: 1, src: actingGreen, alt: "Dramatic Green Light Performance" },
+    { id: 2, src: acting1, alt: "Acting Headshot" },
+    { id: 3, src: actingStage, alt: "Stage Performance" },
+    { id: 4, src: actingClapper, alt: "On Set - Foreign Homeland" },
+    { id: 5, src: acting2, alt: "Acting Profile" },
+    { id: 6, src: actingRedCarpet, alt: "Red Carpet Appearance" },
+    { id: 7, src: actingAwardCeremony, alt: "Receiving Award - Foreign Homeland", className: "effect-shine" },
+    { id: 8, src: actingAwards, alt: "Award Recognition Certificates" },
+];
 
-                {/* Row 2: Clapper (Landscape) + Portrait */}
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingClapper} alt="On Set - Foreign Homeland" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg md:col-span-2" />
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={acting2} alt="Acting Profile" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
+const ActingContent = () => {
+    const [images, setImages] = useState(initialImages);
 
-                {/* Row 3: Portrait + Landscape */}
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingRedCarpet} alt="Red Carpet Appearance" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingAwardCeremony} alt="Receiving Award - Foreign Homeland" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg md:col-span-2 effect-shine" />
+    useEffect(() => {
+        setImages(prev => [...prev].sort(() => Math.random() - 0.5));
+    }, []);
 
-                {/* Row 4: Award Certificates (Feature) */}
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingAwards} alt="Award Recognition Certificates" loading="lazy" className="bg-gray-800 rounded-lg h-64 md:h-80 w-full object-cover shadow-lg md:col-span-3 object-top" />
-            </div>
-        </div>
-
-        {/* Foreign Homeland Showcase */}
+    return (
         <motion.div
-            variants={fadeInUp}
-            className="relative bg-gradient-to-r from-[#1a1a40] to-surface border-l-4 border-primary rounded-r-xl p-8 shadow-2xl overflow-hidden group"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="show"
+            exit={{ opacity: 0, x: -20 }}
+            className="space-y-12"
         >
-            <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-                <div className="space-y-4 max-w-2xl">
-                    <div className="flex items-center gap-3">
-                        <FaTheaterMasks className="text-primary text-2xl" />
-                        <h3 className="text-3xl font-heading font-bold text-white">Foreign Homeland</h3>
+            {/* Intro Section */}
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+                <motion.div variants={fadeInUp} className="space-y-6">
+                    <h3 className="text-2xl font-bold text-primary">The Stage</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                        Acting teaches empathy, presence, and the ability to listen—skills that directly translate to effective team collaboration and user-centric development.
+                        Currently freelancing with Armin Productions.
+                    </p>
+                    <div className="bg-surface p-6 rounded-lg border border-gray-800">
+                        <h4 className="font-bold text-white mb-2">Recent Roles</h4>
+                        <ul className="space-y-2 text-gray-400 text-sm">
+                            <li>• Character Development Workshop (2025)</li>
+                            <li>• "Foreign Homeland" - Lead Support (2024)</li>
+                            <li>• Improvisation Showcase (2023)</li>
+                        </ul>
+                    </div>
+                </motion.div>
+                {/* Image Gallery */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {images.map((img, index) => {
+                        let spanClass = "";
+                        // Layout Logic:
+                        // Index 3 (4th item): span 2 columns
+                        // Index 6 (7th item): span 2 columns
+                        // Index 7 (8th item): span 3 columns
+                        if (index === 3 || index === 6) spanClass = "md:col-span-2";
+                        if (index === 7) spanClass = "md:col-span-3";
+
+                        return (
+                            <motion.img
+                                key={img.id}
+                                variants={fadeInUp}
+                                whileHover={hoverScale}
+                                src={img.src}
+                                alt={img.alt}
+                                loading="lazy"
+                                className={`bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg ${spanClass} ${index === 7 ? 'md:h-80 object-top' : ''} ${img.className || ''}`}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+
+            {/* Foreign Homeland Showcase */}
+            <motion.div
+                variants={fadeInUp}
+                className="relative bg-gradient-to-r from-[#1a1a40] to-surface border-l-4 border-primary rounded-r-xl p-8 shadow-2xl overflow-hidden group"
+            >
+                <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
+                    <div className="space-y-4 max-w-2xl">
+                        <div className="flex items-center gap-3">
+                            <FaTheaterMasks className="text-primary text-2xl" />
+                            <h3 className="text-3xl font-heading font-bold text-white">Foreign Homeland</h3>
+                        </div>
+
+                        <p className="text-gray-300 leading-relaxed text-lg">
+                            I performed as an actor in the short film <em>Foreign Homeland</em>, a personal project I also helped bring to life.
+                            The film explores themes of identity and belonging, receiving recognition for its compelling narrative and performance.
+                        </p>
                     </div>
 
-                    <p className="text-gray-300 leading-relaxed text-lg">
-                        I performed as an actor in the short film <em>Foreign Homeland</em>, a personal project I also helped bring to life.
-                        The film explores themes of identity and belonging, receiving recognition for its compelling narrative and performance.
-                    </p>
+                    <motion.a
+                        href="https://foreign-homeland-web.web.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex-shrink-0 bg-primary hover:bg-yellow-500 text-background font-bold py-4 px-8 rounded-full shadow-lg transition-all flex items-center gap-2"
+                    >
+                        <span>Watch Foreign Homeland</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                        </svg>
+                    </motion.a>
                 </div>
 
-                <motion.a
-                    href="https://foreign-homeland-web.web.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-shrink-0 bg-primary hover:bg-yellow-500 text-background font-bold py-4 px-8 rounded-full shadow-lg transition-all flex items-center gap-2"
-                >
-                    <span>Watch Foreign Homeland</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                    </svg>
-                </motion.a>
-            </div>
-
-            {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-transform duration-700 group-hover:scale-150 group-hover:bg-primary/10"></div>
+                {/* Background Decor */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-transform duration-700 group-hover:scale-150 group-hover:bg-primary/10"></div>
+            </motion.div>
         </motion.div>
-    </motion.div>
-);
+    );
+};
 
 const MusicContent = () => (
     <motion.div
