@@ -52,6 +52,7 @@ const CreativeGallery = ({ images }: CreativeGalleryProps) => {
                             }}
                         >
                             <div className="shadow"></div>
+                            <div className="shadow-top"></div>
                             <div className="label">
                                 <div className="icon">
                                     <Icon size={20} />
