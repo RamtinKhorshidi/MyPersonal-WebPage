@@ -7,6 +7,12 @@ import CreativeTitle from '../components/CreativeTitle';
 // Image Imports
 import acting1 from '../assets/images/acting-1.jpg';
 import acting2 from '../assets/images/acting-2.jpg';
+import actingGreen from '../assets/images/acting-green-mood.jpg';
+import actingClapper from '../assets/images/acting-clapperboard.jpg';
+import actingAwards from '../assets/images/acting-awards.jpg';
+import actingAwardCeremony from '../assets/images/acting-award-ceremony.jpg';
+import actingStage from '../assets/images/acting-stage-suit.jpg';
+import actingRedCarpet from '../assets/images/acting-red-carpet.jpg';
 import coffeeShop from '../assets/images/coffee-shop.jpg';
 
 // Placeholder content components
@@ -35,9 +41,23 @@ const ActingContent = () => (
                     </ul>
                 </div>
             </motion.div>
-            <div className="grid grid-cols-2 gap-4">
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={acting1} alt="Acting Portfolio 1" loading="lazy" className="bg-gray-800 rounded-lg h-48 w-full object-cover shadow-lg" />
-                <motion.img variants={fadeInUp} whileHover={hoverScale} src={acting2} alt="Acting Portfolio 2" loading="lazy" className="bg-gray-800 rounded-lg h-48 w-full object-cover shadow-lg" />
+            {/* Image Gallery */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {/* Row 1: Three Portraits */}
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingGreen} alt="Dramatic Green Light Performance" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={acting1} alt="Acting Headshot" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingStage} alt="Stage Performance" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
+
+                {/* Row 2: Clapper (Landscape) + Portrait */}
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingClapper} alt="On Set - Foreign Homeland" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg md:col-span-2" />
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={acting2} alt="Acting Profile" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
+
+                {/* Row 3: Portrait + Landscape */}
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingRedCarpet} alt="Red Carpet Appearance" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg" />
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingAwardCeremony} alt="Receiving Award - Foreign Homeland" loading="lazy" className="bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg md:col-span-2 effect-shine" />
+
+                {/* Row 4: Award Certificates (Feature) */}
+                <motion.img variants={fadeInUp} whileHover={hoverScale} src={actingAwards} alt="Award Recognition Certificates" loading="lazy" className="bg-gray-800 rounded-lg h-64 md:h-80 w-full object-cover shadow-lg md:col-span-3 object-top" />
             </div>
         </div>
 

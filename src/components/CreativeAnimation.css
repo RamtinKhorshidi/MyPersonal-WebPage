@@ -1,0 +1,203 @@
+/* CreativeAnimation.css */
+
+:root {
+    --anim-duration: 2s;
+    /* Faster for web */
+    --anim-text-in-delay: 50ms;
+    --anim-text-in-duration: 200ms;
+    --anim-easing: cubic-bezier(0.5, 0, 0.5, 1);
+    --anim-dot-color: var(--color-primary);
+    --anim-dot-color-dark: var(--color-secondary);
+}
+
+.splitting-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Ensure it has space */
+    padding: 1rem;
+}
+
+/* Title Styling */
+.creative-title {
+    margin: 0;
+    display: inline-block;
+}
+
+/* Character Animation */
+.creative-title .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-0.4em) scale(0);
+    animation: text-in var(--anim-text-in-duration) var(--anim-easing) forwards;
+    animation-delay: calc(var(--anim-text-in-delay) + (0.1s * var(--char-index)));
+    transform-origin: center 1em;
+}
+
+@keyframes text-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-0.4em) scale(0);
+    }
+
+    90% {
+        transform: translateX(0em) scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0em) scale(1);
+    }
+}
+
+/* Squishy Animation for 'i', 'j' characters or specific ones if desired. 
+   React implementation will apply data-char to allow this targetting.
+*/
+.creative-title .char[data-char="i"],
+.creative-title .char[data-char="j"] {
+    --squish-scale: 0.6;
+    --squish-y: 10%;
+}
+
+.creative-title .char[data-char="i"]::before,
+.creative-title .char[data-char="j"]::before {
+    content: attr(data-char);
+    position: absolute;
+    visibility: hidden;
+    animation: text-squish var(--anim-duration) var(--anim-easing) forwards;
+}
+
+
+/* Dot Animation (The bouncing ball) */
+.dot {
+    width: 0.8em;
+    /* Relative to font size */
+    height: 0.8em;
+    position: absolute;
+    /* Position it relatively properly */
+    right: -0.5em;
+    top: 0.1em;
+
+    animation: dot var(--anim-duration) var(--anim-easing) both;
+    /* Only play when in view? We can control with class */
+}
+
+.dot-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    animation: dot-inner var(--anim-duration) var(--anim-easing) both;
+}
+
+/* SVG Waves inside the dot */
+.dot-wave {
+    width: 200%;
+    height: 200%;
+    fill: var(--anim-dot-color);
+    animation: wave-in 1.5s var(--anim-easing);
+    position: absolute;
+    transform: translateY(30%) translateX(0%);
+}
+
+.dot-wave.background {
+    fill: var(--anim-dot-color-dark);
+    animation-duration: 1.4s;
+}
+
+@keyframes wave-in {
+    0% {
+        transform: translateY(100%) translateX(-110%);
+    }
+
+    70% {
+        transform: translateY(30%) translateX(0%);
+    }
+}
+
+/* Dot Physics */
+@keyframes dot {
+    0% {
+        opacity: 0;
+        transform: scale(3);
+    }
+
+    10% {
+        opacity: 1;
+        transform: scale(3);
+    }
+
+    15% {
+        transform: scale(3) translateY(0.5em) scaleY(1.5);
+    }
+
+    20% {
+        transform: scale(1) translateY(-300%);
+    }
+
+    30% {
+        transform: translateY(1em) scaleY(0.5);
+    }
+
+    40% {
+        transform: translateY(-400%);
+    }
+
+    50% {
+        transform: translateY(-1em);
+    }
+
+    53% {
+        transform: translateY(-300%);
+    }
+
+    56% {
+        transform: translateY(-1em);
+    }
+
+    59% {
+        transform: translateY(-200%);
+    }
+
+    62% {
+        transform: translateY(1em);
+    }
+
+    80%,
+    100% {
+        transform: translateY(1em);
+        opacity: 0;
+    }
+
+    /* Fade out at end to settle */
+}
+
+@keyframes dot-inner {
+
+    0%,
+    45% {
+        transform: none;
+    }
+
+    70% {
+        transform: translateX(6em);
+    }
+
+    /* Shoot across */
+    80% {
+        transform: translateX(4.3em);
+    }
+
+    100% {
+        transform: translateX(4.4em);
+    }
+}
+
+/* Integration Helper */
+.splitting-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: baseline;
+}

@@ -1,0 +1,122 @@
+/* EarthAnimation.css */
+
+/* Register properties for animation */
+@property --pulse {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 8px;
+    /* Scaled down from 80 */
+}
+
+@property --pulse2 {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 5.6px;
+    /* Scaled down from 56 */
+}
+
+@property --r {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.earth-globe {
+    position: relative;
+    /* Scale down slightly: 300px -> ~40px */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    /* Use the provided tile texture */
+    background-image: url('https://i.postimg.cc/9QCCCVsQ/earth.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    /* Ensure height fits container */
+
+    animation: earth-spin 40s linear infinite, earth-pulse 3s linear infinite alternate-reverse;
+
+    /* Adjusted shadow colors for our theme */
+    box-shadow:
+        0 -0.5px 0.5px 0.5px rgba(255, 255, 255, 0.2),
+        -0.5px 0.5px 0.5px 0.5px var(--color-secondary),
+        0 0 var(--pulse) -5px var(--color-secondary),
+        inset 0 0 10px -2px var(--color-secondary),
+        inset 0 0 var(--pulse2) -2px var(--color-secondary);
+
+    margin-right: 0px;
+    /* Space between globe and text */
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+/* Aurora / Atmosphere Effects */
+.earth-globe::before,
+.earth-globe::after {
+    content: '';
+    position: absolute;
+    left: 20%;
+    height: 2px;
+    /* tiny */
+    border-radius: 45%;
+    filter: blur(1px);
+    transform: rotate(var(--r));
+    animation: earth-rotation 10s linear infinite;
+    opacity: 0.6;
+}
+
+/* Pink/Red Aura */
+.earth-globe::before {
+    width: 14%;
+    top: 10%;
+    box-shadow:
+        inset 0 0 10px 5px var(--color-primary),
+        0 0 10px 5px var(--color-primary);
+}
+
+/* Gold/White Aura */
+.earth-globe::after {
+    width: 7%;
+    top: 5%;
+    left: 60%;
+    box-shadow:
+        inset 0 0 5px -2px white,
+        inset 0 0 5px 5px #f2c879,
+        0 0 10px 5px #f2c879;
+}
+
+@keyframes earth-spin {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -48px 0;
+    }
+
+    /* 200% of width roughly */
+}
+
+@keyframes earth-pulse {
+    0% {
+        --pulse: 3px;
+        --pulse2: 2px;
+        --r: 0deg;
+    }
+
+    100% {
+        --pulse: 5px;
+        --pulse2: 1px;
+        --r: 180deg;
+    }
+}
+
+@keyframes earth-rotation {
+    from {
+        --r: 0deg;
+    }
+
+    to {
+        --r: 180deg;
+    }
+}
