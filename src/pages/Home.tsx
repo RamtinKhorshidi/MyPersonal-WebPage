@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaCode, FaTheaterMasks } from 'react-icons/fa';
 import { pageVariants, textReveal } from '../utils/animations';
 
-import GhostText from '../components/GhostText';
+import GhostSpirit from '../components/GhostSpirit';
 
 const Home = () => {
     const { scrollY } = useScroll();
@@ -22,6 +22,9 @@ const Home = () => {
             <motion.div style={{ y: y1 }} className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] pointer-events-none" />
             <motion.div style={{ y: y2 }} className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[128px] pointer-events-none" />
 
+            {/* Floating Spirit Animation - Full Width */}
+            <GhostSpirit />
+
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="overflow-hidden mb-4">
@@ -34,12 +37,12 @@ const Home = () => {
                     </div>
 
                     <div className="overflow-hidden mb-6">
-                        <motion.div variants={textReveal}>
-                            <GhostText
-                                text="Ramtin Khorshidi"
-                                className="text-5xl md:text-8xl font-heading font-bold text-white leading-tight"
-                            />
-                        </motion.div>
+                        <motion.h1
+                            variants={textReveal}
+                            className="text-5xl md:text-8xl font-heading font-bold text-white leading-tight"
+                        >
+                            Ramtin Khorshidi
+                        </motion.h1>
                     </div>
 
                     <motion.div

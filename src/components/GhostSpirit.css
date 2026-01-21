@@ -1,0 +1,118 @@
+.ghost-spirit {
+    /* 20% smaller than previous 0.6em -> ~0.45em - 0.5em */
+    --ghost-scale: 0.5;
+
+    /* Fixed pixel size to ensure visibility or relative to viewport? 
+       Using px or rem might be safer than 'em' if we move it out of the text container.
+       Let's stick to a reasonable fixed size that scales well. */
+    width: 60px;
+    /* Base width */
+    height: 90px;
+
+    position: absolute;
+    top: 50%;
+    /* Start fully right */
+    right: -100px;
+
+    background-color: #f0f0f0;
+
+    /* Eyes and mouth */
+    background-image:
+        radial-gradient(ellipse at 35% 40%, var(--color-primary) 8%, transparent 0%),
+        radial-gradient(ellipse at 65% 40%, var(--color-primary) 8%, transparent 0%),
+        radial-gradient(ellipse at 50% 60%, var(--color-primary) 8%, transparent 0%);
+
+    border-radius: 100% / 70% 70% 0% 0%;
+
+    opacity: 0.9;
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+    z-index: 20;
+
+    /* Animation */
+    animation: spiritFloat 8s linear infinite;
+}
+
+@keyframes spiritFloat {
+    0% {
+        /* Start from right edge of viewport */
+        left: 100vw;
+        transform: translateY(-50%) rotateZ(-90deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+
+    90% {
+        opacity: 0.9;
+    }
+
+    100% {
+        /* End at left edge of viewport */
+        left: -100px;
+        /* Or -10vw */
+        transform: translateY(-50%) rotateZ(-90deg);
+        opacity: 0;
+    }
+}
+
+/* Legs */
+.ghost-spirit div {
+    position: absolute;
+    width: 20%;
+    background-color: #f0f0f0;
+}
+
+.ghost-spirit div:nth-of-type(1) {
+    height: 60%;
+    left: 0;
+    bottom: -50%;
+    border-radius: 100% / 0% 0% 50% 50%;
+}
+
+.ghost-spirit div:nth-of-type(2),
+.ghost-spirit div:nth-of-type(4) {
+    height: 35%;
+    bottom: -25%;
+    border-radius: 100% / 50% 50% 0% 0%;
+    background-color: transparent;
+}
+
+.ghost-spirit div:nth-of-type(2) {
+    left: 20%;
+}
+
+.ghost-spirit div:nth-of-type(4) {
+    left: 60%;
+}
+
+.ghost-spirit div:nth-of-type(3) {
+    height: 35%;
+    left: 40%;
+    bottom: -33%;
+    border-radius: 100% / 0% 0% 60% 60%;
+    background-color: #f0f0f0;
+}
+
+.ghost-spirit div:nth-of-type(5) {
+    height: 25%;
+    left: 80%;
+    bottom: -24%;
+    border-radius: 100% / 0% 0% 70% 70%;
+    background-color: #f0f0f0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .ghost-spirit {
+        /* Smaller on mobile per user hint availability? 
+           User asked "Let me know if you'd like... more subtle on mobile".
+           I'll make it slightly smaller to be safe. */
+        width: 40px;
+        height: 60px;
+        animation-duration: 6s;
+        /* Faster on smaller screen? or same? */
+    }
+}
