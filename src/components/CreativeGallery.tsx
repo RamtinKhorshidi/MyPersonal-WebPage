@@ -57,8 +57,36 @@ const CreativeGallery = ({ images }: CreativeGalleryProps) => {
                                     <Icon size={20} />
                                 </div>
                                 <div className="info">
-                                    <div className="main">{img.alt.split(' - ')[0] || "Portfolio"}</div>
-                                    <div className="sub">{img.alt.split(' - ')[1] || "Ramtin Portfolio"}</div>
+                                    <div className="main">
+                                        {isActive ? (
+                                            (img.alt.split(' - ')[0] || "Portfolio").split(' ').map((word, i) => (
+                                                <span
+                                                    key={i}
+                                                    className="word-span"
+                                                    style={{ animationDelay: `${i * 0.05}s` }}
+                                                >
+                                                    {word}
+                                                </span>
+                                            ))
+                                        ) : (
+                                            img.alt.split(' - ')[0] || "Portfolio"
+                                        )}
+                                    </div>
+                                    <div className="sub">
+                                        {isActive ? (
+                                            (img.alt.split(' - ')[1] || "Ramtin Portfolio").split(' ').map((word, i) => (
+                                                <span
+                                                    key={i}
+                                                    className="word-span"
+                                                    style={{ animationDelay: `${(i * 0.03) + 0.3}s` }} // Slight delay for sub
+                                                >
+                                                    {word}
+                                                </span>
+                                            ))
+                                        ) : (
+                                            img.alt.split(' - ')[1] || "Ramtin Portfolio"
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
