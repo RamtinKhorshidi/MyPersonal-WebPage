@@ -120,11 +120,12 @@
     transform: translateY(0);
 }
 
-/* Bottom Icon */
+/* Bottom Icon - Centered */
 .option .label .icon {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: row;
     justify-content: center;
