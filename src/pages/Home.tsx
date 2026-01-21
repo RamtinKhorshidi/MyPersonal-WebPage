@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { FaCode, FaTheaterMasks } from 'react-icons/fa';
 import { pageVariants, textReveal } from '../utils/animations';
 
+import GhostText from '../components/GhostText';
+
 const Home = () => {
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
@@ -32,12 +34,12 @@ const Home = () => {
                     </div>
 
                     <div className="overflow-hidden mb-6">
-                        <motion.h1
-                            variants={textReveal}
-                            className="text-5xl md:text-8xl font-heading font-bold text-white leading-tight"
-                        >
-                            Ramtin Khorshidi
-                        </motion.h1>
+                        <motion.div variants={textReveal}>
+                            <GhostText
+                                text="Ramtin Khorshidi"
+                                className="text-5xl md:text-8xl font-heading font-bold text-white leading-tight"
+                            />
+                        </motion.div>
                     </div>
 
                     <motion.div
