@@ -10,7 +10,7 @@
     height: 90px;
 
     position: absolute;
-    top: 50%;
+    top: var(--ghost-y, 50%);
     /* Start fully right */
     right: -100px;
 
