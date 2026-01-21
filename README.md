@@ -27,11 +27,17 @@ A cinematic, high-performance personal portfolio website showcasing my dual jour
 - **Staggered Reveals**: Content cascades in elegantly rather than loading abruptly.
 - **Custom Typography Animation**: "Creative Journey" title features a Splitting.js integration with physics-based SVG interactions.
 - **3D Flip Toggles**: Custom CSS 3D transforms for the theme switcher.
+- **Ghost Spirit Animation**: A playful, CSS-only floating spirit that traverses the homepage with randomized vertical positioning and blend-mode interactions.
 
 ### 📱 Responsive Design
 - Fully responsive layout optimized for mobile, tablet, and desktop.
 - Adaptive navigation with mobile drawer menu and blurry backdrop support.
+- **Expanding Gallery**: An interactive, accordion-style image gallery in the Acting section that expands cards on click/tap, optimized for both desktop (horizontal) and mobile (vertical) layouts.
 - **Showcase Cards**: Dedicated "Foreign Homeland" feature card with interactive hover states.
+
+### ⚡ Performance
+- **Image Optimization**: Automated script (`scripts/optimize-images.cjs`) converts assets to WebP and resizes them.
+- **Lazy Loading**: Integrated throughout the gallery for faster initial page loads.
 
 ## 📦 Usage
 
