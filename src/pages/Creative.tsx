@@ -27,6 +27,8 @@ const initialImages = [
     { id: 8, src: actingAwards, alt: "Award Recognition Certificates" },
 ];
 
+import CreativeGallery from '../components/CreativeGallery';
+
 const ActingContent = () => {
     const [images, setImages] = useState(initialImages);
 
@@ -59,29 +61,10 @@ const ActingContent = () => {
                         </ul>
                     </div>
                 </motion.div>
-                {/* Image Gallery */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {images.map((img, index) => {
-                        let spanClass = "";
-                        // Layout Logic:
-                        // Index 3 (4th item): span 2 columns
-                        // Index 6 (7th item): span 2 columns
-                        // Index 7 (8th item): span 3 columns
-                        if (index === 3 || index === 6) spanClass = "md:col-span-2";
-                        if (index === 7) spanClass = "md:col-span-3";
 
-                        return (
-                            <motion.img
-                                key={img.id}
-                                variants={fadeInUp}
-                                whileHover={hoverScale}
-                                src={img.src}
-                                alt={img.alt}
-                                loading="lazy"
-                                className={`bg-gray-800 rounded-lg h-64 w-full object-cover shadow-lg ${spanClass} ${index === 7 ? 'md:h-80 object-top' : ''} ${img.className || ''}`}
-                            />
-                        );
-                    })}
+                {/* New Expanding Gallery */}
+                <div className="w-full">
+                    <CreativeGallery images={images} />
                 </div>
             </div>
 
