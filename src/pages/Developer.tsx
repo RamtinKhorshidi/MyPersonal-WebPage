@@ -5,15 +5,9 @@ import { pageVariants, staggerContainer, fadeInUp, hoverScale } from '../utils/a
 
 // Image Imports
 // Image Imports
-import codingSetup from '../assets/images/coding-setup.jpg'; // Reused for Foreign Homeland for now if no specific image provided, or I can use one from Creative? 
-// User didn't provide image for Foreign Homeland card specifically, but uploaded certificates.
-// I can use `actingClapper` or similar from Creative imports if I want, but I'll stick to a placeholder or re-import one. 
-// Actually, I'll import `foreignHomelandPoster` or just reuse `codingSetup` for now as a generic dev image, OR import one of the acting images that represents the film. 
-// "Foreign Homeland" poster exists in assets? Let's check. 
-// I'll import `posterVertical` from assets if it exists (previous conversations mentioned it).
-// Let's safe bet: React Project image is getting removed. 
 import certReact from '../assets/images/certificate-react.jpg';
 import certJS from '../assets/images/certificate-js.jpg';
+import foreignHomelandImg from '../assets/images/foreign-homeland-project.jpg';
 
 const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
     <motion.div
@@ -61,7 +55,7 @@ const Developer = () => {
             title: 'Foreign Homeland',
             description: 'A dedicated website for the short film "Foreign Homeland", exploring themes of identity and belonging. This project showcases a responsive design and seamless user experience, serving as a digital hub for the film\'s promotion and audience engagement.',
             tags: ['JavaScript', 'HTML', 'CSS', 'Firebase'],
-            image: codingSetup, // Using codingSetup as a placeholder since no specific screenshot provided for dev card
+            image: foreignHomelandImg,
             githubUrl: 'https://github.com/RamtinKhorshidi/Foreign-Homeland',
         }
     ];
