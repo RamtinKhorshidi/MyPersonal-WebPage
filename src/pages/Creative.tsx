@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTheaterMasks, FaMusic, FaCoffee } from 'react-icons/fa';
-import { pageVariants, fadeInUp, staggerContainer, hoverScale } from '../utils/animations';
+import { pageVariants, fadeInUp, staggerContainer } from '../utils/animations';
 import CreativeTitle from '../components/CreativeTitle';
 
 // Image Imports
@@ -161,8 +161,7 @@ const BaristaContent = () => (
             <motion.div variants={fadeInUp} className="space-y-6">
                 <h3 className="text-2xl font-bold text-primary">The Showman</h3>
                 <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
-                    At <span className="text-white font-semibold">Good Earth Coffeehouse</span>, I don't just serve coffee; I curate an experience.
-                    My "Barista Showman" persona leverages inventive flair and natural charisma to turn a routine transaction into a memorable interaction.
+                    At <span className="text-white font-semibold">Good Earth Coffeehouse</span>, I make coffee and do my best to leave people with a smile. I like adding a touch of fun and friendliness to each interaction—nothing fancy, just trying to make the moment a little nicer.
                 </p>
                 <div className="flex justify-center gap-4">
                     <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
