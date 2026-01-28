@@ -81,8 +81,7 @@ const ActingContent = () => {
                         </div>
 
                         <p className="text-gray-300 leading-relaxed text-lg">
-                            I performed as an actor in the short film <em>Foreign Homeland</em>, a personal project I also helped bring to life.
-                            The film explores themes of identity and belonging, receiving recognition for its compelling narrative and performance.
+                            I played a supporting role in the film <em>Foreign Homeland</em>, a truly special project featuring an incredible, realistic, and heartfelt story directed by the highly talented Armin Zarringhalam, who is also a close friend of mine. This experience not only helped me build valuable connections with numerous artists and deepened my ties to the artistic community more than ever, but it also culminated in me winning an international Best Actor award (VIYFF). I proudly carried this honor back to Calgary from my very first trip ever to Vancouver.
                         </p>
                     </div>
 
