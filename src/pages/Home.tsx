@@ -76,9 +76,9 @@ const Home = () => {
                     >
                         <Link to="/developer">
                             <motion.button
-                                whileHover={{ scale: 1.05, backgroundColor: "#fe7f2d", color: "#0e0e52" }}
+                                whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 bg-transparent border border-primary text-primary rounded-full font-bold flex items-center gap-3 transition-colors"
+                                className="px-8 py-4 bg-transparent border border-primary text-primary rounded-full font-bold flex items-center gap-3 transition-colors hover:bg-primary hover:text-background"
                             >
                                 <FaCode className="text-xl" />
                                 <span>View Projects</span>
@@ -86,9 +86,9 @@ const Home = () => {
                         </Link>
                         <Link to="/creative">
                             <motion.button
-                                whileHover={{ scale: 1.05, backgroundColor: "#D4AF37", color: "#0F0F11" }}
+                                whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 bg-transparent border border-primary text-primary rounded-full font-bold flex items-center gap-3 transition-colors"
+                                className="px-8 py-4 bg-transparent border border-primary text-primary rounded-full font-bold flex items-center gap-3 transition-colors hover:bg-primary hover:text-background"
                             >
                                 <FaTheaterMasks className="text-xl" />
                                 <span>Creative Journey</span>
