@@ -59,30 +59,31 @@
   }
 
   [data-theme='light'] {
-    /* LIGHT MODE - Madder Background / Sunset Surface / Bistre Text & Primary */
+    /* THEME 2 - Onyx / Baltic Blue / Pink Orchid */
+    /* A cinematic, high-contrast aesthetic */
 
-    /* Background: Madder (Deep Red) */
-    --color-background: #b91c1c;
+    /* Background: Onyx (Deep Black) */
+    --color-background: #0d0d0d;
 
-    /* Surface: Sunset (Amber/Gold) */
-    --color-surface: #d97706;
+    /* Surface: Baltic Blue (Muted Teal/Blue) */
+    --color-surface: #2f5973;
 
-    /* Primary: Bistre (Dark Brown) */
-    --color-primary: #29150f;
+    /* Primary: Pink Orchid (Soft Rose) - Used for Interactive Elements */
+    --color-primary: #cfa5b4;
 
-    /* Secondary & Accent: Sunset */
-    --color-secondary: #d97706;
-    --color-accent: #d97706;
+    /* Secondary: Baltic Blue */
+    --color-secondary: #2f5973;
 
-    /* Border: Bistre (Alpha) */
-    --color-border: rgba(41, 21, 15, 0.3);
+    /* Accent: Pink Orchid */
+    --color-accent: #cfa5b4;
 
-    /* Text: Bistre */
-    --color-text-base: #29150f;
-    --color-text-heading: #1a0f0a;
-    /* Keeping the slightly darker Bistre for Headings */
-    --color-text-muted: rgba(41, 21, 15, 0.7);
-    /* Bistre with opacity */
+    /* Border: Baltic Blue (Alpha) */
+    --color-border: rgba(47, 89, 115, 0.4);
+
+    /* Text: Pink Orchid (Primary contrast against Onyx) */
+    --color-text-base: #cfa5b4;
+    --color-text-heading: #cfa5b4;
+    --color-text-muted: rgba(207, 165, 180, 0.6);
   }
 
   body {
