@@ -20,14 +20,14 @@ import barista4 from '../assets/images/barista-4.jpg';
 
 // Placeholder content components
 const initialImages = [
-    { id: 1, src: actingGreen, alt: "Dramatic Green Light Performance" },
+    { id: 1, src: actingGreen, alt: "Acting in my first theater" },
     { id: 2, src: acting1, alt: "Acting Headshot" },
     { id: 3, src: actingStage, alt: "Stage Performance" },
-    { id: 4, src: actingClapper, alt: "On Set - Foreign Homeland" },
-    { id: 5, src: acting2, alt: "Acting Profile" },
-    { id: 6, src: actingRedCarpet, alt: "Red Carpet Appearance" },
-    { id: 7, src: actingAwardCeremony, alt: "Receiving Award - Foreign Homeland", className: "effect-shine" },
-    { id: 8, src: actingAwards, alt: "Award Recognition Certificates" },
+    { id: 4, src: actingClapper, alt: "While getting lost in the notes" },
+    { id: 5, src: acting2, alt: "Live hosting as a bilingual MC" },
+    { id: 6, src: actingRedCarpet, alt: "Comedy performance in the Art Commons Great Hall" },
+    { id: 7, src: actingAwardCeremony, alt: "Official appearance at the red carpet event at Bella Concert Hall", className: "effect-shine" },
+    { id: 8, src: actingAwards, alt: "Receiving the Best Actor Award" },
 ];
 
 const baristaImages = [
