@@ -95,6 +95,15 @@ const Navbar = () => {
                                     {link.name}
                                 </Link>
                             ))}
+                            <div className="pt-4 border-t border-gray-800 w-full flex justify-between items-center">
+                                <span className="text-gray-400">Switch Theme</span>
+                                <ThemeToggle />
+                            </div>
+                            <Link to="/contact" className="w-full">
+                                <button className="w-full bg-primary/90 hover:bg-primary text-background font-bold px-5 py-3 rounded-full transition-transform active:scale-95">
+                                    Let's Talk
+                                </button>
+                            </Link>
                         </div>
                     </motion.div>
                 )}
