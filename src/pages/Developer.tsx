@@ -4,8 +4,16 @@ import { SiTailwindcss, SiTypescript } from 'react-icons/si';
 import { pageVariants, staggerContainer, fadeInUp, hoverScale } from '../utils/animations';
 
 // Image Imports
-import codingSetup from '../assets/images/coding-setup.jpg';
-import reactProject from '../assets/images/react-project.jpeg';
+// Image Imports
+import codingSetup from '../assets/images/coding-setup.jpg'; // Reused for Foreign Homeland for now if no specific image provided, or I can use one from Creative? 
+// User didn't provide image for Foreign Homeland card specifically, but uploaded certificates.
+// I can use `actingClapper` or similar from Creative imports if I want, but I'll stick to a placeholder or re-import one. 
+// Actually, I'll import `foreignHomelandPoster` or just reuse `codingSetup` for now as a generic dev image, OR import one of the acting images that represents the film. 
+// "Foreign Homeland" poster exists in assets? Let's check. 
+// I'll import `posterVertical` from assets if it exists (previous conversations mentioned it).
+// Let's safe bet: React Project image is getting removed. 
+import certReact from '../assets/images/certificate-react.jpg';
+import certJS from '../assets/images/certificate-js.jpg';
 
 const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
     <motion.div
@@ -50,19 +58,17 @@ const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
 const Developer = () => {
     const projects = [
         {
-            title: 'Personal Portfolio V2',
-            description: 'A cinematic, high-performance portfolio website built with React, TypeScript, and Framer Motion. Featuring smooth page transitions, declarative animations, and a custom dark mode theme.',
-            tags: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
-            image: codingSetup,
-            githubUrl: 'https://github.com/RamtinKhorshidi/MyPersonal-WebPage',
-        },
-        {
-            title: 'React Project (Unknown)',
-            description: 'A showcase of React capabilities including component architecture, state management, and responsive design.',
-            tags: ['React', 'JavaScript', 'CSS'],
-            image: reactProject,
-            githubUrl: 'https://github.com/RamtinKhorshidi',
+            title: 'Foreign Homeland',
+            description: 'A dedicated website for the short film "Foreign Homeland", exploring themes of identity and belonging. This project showcases a responsive design and seamless user experience, serving as a digital hub for the film\'s promotion and audience engagement.',
+            tags: ['JavaScript', 'HTML', 'CSS', 'Firebase'],
+            image: codingSetup, // Using codingSetup as a placeholder since no specific screenshot provided for dev card
+            githubUrl: 'https://github.com/RamtinKhorshidi/Foreign-Homeland',
         }
+    ];
+
+    const certificates = [
+        { title: 'Complete React Developer', issuer: 'Udemy', image: certReact },
+        { title: 'JavaScript Algorithms and Data Structures', issuer: 'freeCodeCamp', image: certJS },
     ];
 
     const skills = [
@@ -116,6 +122,33 @@ const Developer = () => {
                 </div>
             </motion.div>
 
+            {/* Certificates Section */}
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="mb-20"
+            >
+                <motion.h2 variants={fadeInUp} className="text-2xl font-bold text-white mb-8">Certificates</motion.h2>
+                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    {certificates.map((cert, index) => (
+                        <motion.div
+                            key={index}
+                            variants={fadeInUp}
+                            whileHover={{ scale: 1.02 }}
+                            className="bg-surface rounded-xl overflow-hidden border border-white/10 hover:border-primary transition-all shadow-lg"
+                        >
+                            <img src={cert.image} alt={cert.title} className="w-full h-auto object-cover" />
+                            <div className="p-4 border-t border-white/5">
+                                <h3 className="text-lg font-bold text-white leading-tight">{cert.title}</h3>
+                                <p className="text-primary text-sm mt-1">{cert.issuer}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </motion.div>
+
             {/* Projects Grid */}
             <motion.div
                 variants={staggerContainer}
@@ -124,11 +157,18 @@ const Developer = () => {
                 viewport={{ once: true }}
             >
                 <motion.h2 variants={fadeInUp} className="text-2xl font-bold text-white mb-8">Featured Projects</motion.h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                     {projects.map((project, index) => (
                         <ProjectCard key={index} {...project} />
                     ))}
                 </div>
+
+                <motion.p
+                    variants={fadeInUp}
+                    className="text-center text-gray-400 italic text-lg"
+                >
+                    Soon more projects will be added to this page.
+                </motion.p>
             </motion.div>
         </motion.div>
     );
