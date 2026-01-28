@@ -39,7 +39,7 @@ const Home = () => {
                     <div className="overflow-hidden mb-6">
                         <motion.h1
                             variants={textReveal}
-                            className="text-5xl md:text-8xl font-heading font-bold text-white leading-tight"
+                            className="text-5xl md:text-8xl font-heading font-bold metallic-shine leading-tight"
                         >
                             Ramtin Khorshidi
                         </motion.h1>
