@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTheaterMasks, FaMusic, FaCoffee, FaChalkboardTeacher, FaSmile, FaMugHot } from 'react-icons/fa';
+import { FaTheaterMasks, FaMusic, FaCoffee, FaChalkboardTeacher, FaSmile, FaMugHot, FaTelegram } from 'react-icons/fa';
 import { pageVariants, fadeInUp, staggerContainer } from '../utils/animations';
 import CreativeTitle from '../components/CreativeTitle';
 
@@ -132,18 +132,40 @@ const MusicContent = () => (
             Check out my tracks on SoundCloud.
         </p>
 
-        <div className="w-full max-w-3xl bg-surface border border-gray-800 rounded-xl p-8 flex flex-col items-center justify-center min-h-[200px]">
-            <FaMusic className="text-6xl text-gray-700 mb-4" />
-            <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://soundcloud.com/4P0DTGItgesHB8IBmC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary hover:bg-yellow-500 text-background font-bold py-3 px-8 rounded-full transition-colors flex items-center gap-2 shadow-lg"
-            >
-                Start Listening on SoundCloud
-            </motion.a>
+        <div className="grid md:grid-cols-2 gap-6 w-full max-w-5xl px-4">
+            {/* SoundCloud Card */}
+            <div className="bg-surface border border-gray-800 rounded-xl p-8 flex flex-col items-center justify-center min-h-[250px] hover:border-primary/50 transition-colors group">
+                <FaMusic className="text-6xl text-gray-700 mb-6 group-hover:text-primary transition-colors" />
+                <h4 className="text-xl font-bold text-white mb-2">SoundCloud</h4>
+                <p className="text-gray-400 text-sm mb-6">Original compositions & beats</p>
+                <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="https://soundcloud.com/4P0DTGItgesHB8IBmC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary hover:bg-yellow-500 text-background font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2 shadow-lg w-full justify-center"
+                >
+                    <FaMusic /> Listen on SoundCloud
+                </motion.a>
+            </div>
+
+            {/* Telegram Card */}
+            <div className="bg-surface border border-gray-800 rounded-xl p-8 flex flex-col items-center justify-center min-h-[250px] hover:border-[#229ED9] transition-colors group">
+                <FaTelegram className="text-6xl text-gray-700 mb-6 group-hover:text-[#229ED9] transition-colors" />
+                <h4 className="text-xl font-bold text-white mb-2">Telegram Channel</h4>
+                <p className="text-gray-400 text-sm mb-6">Ramtin Khorshidi org Channel</p>
+                <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="https://t.me/sedaye_ramtin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#229ED9] hover:bg-[#1e8dbf] text-white font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2 shadow-lg w-full justify-center"
+                >
+                    <FaTelegram /> Join Channel
+                </motion.a>
+            </div>
         </div>
     </motion.div>
 );
