@@ -1,9 +1,40 @@
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import { pageVariants, fadeInUp, staggerContainer } from '../utils/animations';
 import EarthGlobe from '../components/EarthGlobe';
 
 const Contact = () => {
+    const form = useRef<HTMLFormElement>(null);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    const sendEmail = (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        // Replace these with your actual Service ID, Template ID, and Public Key from EmailJS
+        // ideally via import.meta.env.VITE_EMAILJS_SERVICE_ID etc.
+        const SERVICE_ID = 'service_id_placeholder';
+        const TEMPLATE_ID = 'template_id_placeholder';
+        const PUBLIC_KEY = 'public_key_placeholder';
+
+        if (form.current) {
+            emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+                .then((result) => {
+                    console.log(result.text);
+                    setLoading(false);
+                    setStatus('success');
+                    if (form.current) form.current.reset();
+                    setTimeout(() => setStatus('idle'), 5000);
+                }, (error) => {
+                    console.log(error.text);
+                    setLoading(false);
+                    setStatus('error');
+                });
+        }
+    };
     return (
         <motion.div
             className="container mx-auto px-6 py-12"
@@ -51,8 +82,8 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-1">Email</h3>
-                                <a href="mailto:contact@ramtinkhorshidi.com" className="text-gray-400 hover:text-white transition-colors">
-                                    ramtinkhorshidi@example.com (Replace with actual)
+                                <a href="mailto:rkhorshidi2003@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                                    rkhorshidi2003@gmail.com
                                 </a>
                             </div>
                         </div>
@@ -71,13 +102,15 @@ const Contact = () => {
                     variants={fadeInUp}
                     className="bg-surface p-8 rounded-2xl border border-gray-800"
                 >
-                    <form className="space-y-6">
+                    <form ref={form} onSubmit={sendEmail} className="space-y-6">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Name</label>
                             <motion.input
                                 whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
                                 type="text"
                                 id="name"
+                                name="user_name"
+                                required
                                 className="w-full bg-background border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                                 placeholder="Your Name"
                             />
@@ -88,6 +121,8 @@ const Contact = () => {
                                 whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
                                 type="email"
                                 id="email"
+                                name="user_email"
+                                required
                                 className="w-full bg-background border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                                 placeholder="name@example.com"
                             />
@@ -97,19 +132,26 @@ const Contact = () => {
                             <motion.textarea
                                 whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
                                 id="message"
+                                name="message"
+                                required
                                 rows={4}
                                 className="w-full bg-background border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                                 placeholder="Tell me about your project..."
                             ></motion.textarea>
                         </div>
+
+                        {status === 'success' && <p className="text-green-500 text-sm">Message sent successfully!</p>}
+                        {status === 'error' && <p className="text-red-500 text-sm">Failed to send message. Please try again.</p>}
+
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            type="button"
-                            className="w-full bg-primary hover:bg-yellow-500 text-background font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                            type="submit"
+                            disabled={loading}
+                            className={`w-full bg-primary hover:bg-yellow-500 text-background font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                             <FaPaperPlane />
-                            Send Message
+                            {loading ? 'Sending...' : 'Send Message'}
                         </motion.button>
                     </form>
                 </motion.div>
