@@ -26,9 +26,6 @@
     min-width: 60px;
     margin: 10px;
     background-color: var(--color-surface);
-    /* Fallback */
-    background-size: cover;
-    background-position: center;
     cursor: pointer;
     transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
     border-radius: 30px;
@@ -38,21 +35,46 @@
     z-index: 0;
 }
 
+/* Background Layer (Blurred when active) */
+.bg-layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    z-index: 0;
+}
+
+/* Foreground Layer (Clean, contained image) */
+.fg-layer {
+    position: absolute;
+    inset: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transform: scale(0.9);
+    /* Start slightly smaller for pop effect */
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    z-index: 1;
+}
+
 .option.active {
     flex-grow: 10000;
     transform: scale(1);
     margin: 0px;
     border-radius: 40px;
+}
 
-    /* Show full image when active? Reference says background-size: auto 100% 
-     But 'cover' usually looks better for full headers. 
-     Reference uses 'auto 100%' which might leave whitespace if aspect ratio differs.
-     Given user complaint about cropping, 'cover' is risky if parts are cut.
-     But 'contain' might leave empty space.
-     Reference uses `auto 100%` (height 100%).
-     I'll stick to 'cover' for a filled look, but maybe center it well. 
-     Actually, let's try to follow the reference's logic of zooming. */
-    background-size: cover;
+.option.active .bg-layer {
+    filter: blur(20px) brightness(0.6);
+    transform: scale(1.1);
+    /* Prevent blurred edges showing background color */
+}
+
+.option.active .fg-layer {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Reference specific shadow logic */

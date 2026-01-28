@@ -47,7 +47,6 @@ const CreativeGallery = ({ images }: CreativeGalleryProps) => {
                         <div
                             key={img.id}
                             className={`option ${isActive ? 'active' : ''}`}
-                            style={{ backgroundImage: `url(${img.src})` }}
                             onClick={() => setActiveId(img.id)}
                             role="button"
                             tabIndex={0}
@@ -58,6 +57,18 @@ const CreativeGallery = ({ images }: CreativeGalleryProps) => {
                                 }
                             }}
                         >
+                            {/* Background Layer: Blurs when active */}
+                            <div
+                                className="bg-layer"
+                                style={{ backgroundImage: `url(${img.src})` }}
+                            ></div>
+
+                            {/* Foreground Layer: Contains standard aspect ratio, visible only when active */}
+                            <div
+                                className="fg-layer"
+                                style={{ backgroundImage: `url(${img.src})` }}
+                            ></div>
+
                             <div className="shadow"></div>
                             <div className="shadow-top"></div>
                             <div className="label">
