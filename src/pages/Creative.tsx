@@ -227,7 +227,7 @@ const Creative = () => {
                             }`}
                     >
                         <tab.icon />
-                        <span className="hidden md:inline">{tab.label}</span>
+                        <span className="text-sm md:text-base">{tab.label}</span>
                     </motion.button>
                 ))}
             </motion.div>

@@ -39,7 +39,7 @@ const Home = () => {
                     <div className="overflow-hidden mb-6">
                         <motion.h1
                             variants={textReveal}
-                            className="text-5xl md:text-8xl font-heading font-bold metallic-shine leading-tight"
+                            className="text-4xl md:text-8xl font-heading font-bold metallic-shine leading-tight"
                         >
                             Ramtin Khorshidi
                         </motion.h1>
@@ -51,10 +51,10 @@ const Home = () => {
                         transition={{ delay: 0.4, duration: 0.8 }}
                         className="h-16 mb-8"
                     >
-                        <p className="text-2xl md:text-4xl text-gray-300 font-light">
+                        <p className="text-xl md:text-4xl text-gray-300 font-light flex flex-wrap justify-center gap-2">
                             <span className="text-primary font-semibold">Code Performer</span>
-                            <span className="mx-3 text-gray-600">|</span>
-                            Front-End Developer
+                            <span className="hidden md:inline mx-3 text-gray-600">|</span>
+                            <span className="block md:inline mt-1 md:mt-0">Front-End Developer</span>
                         </p>
                     </motion.div>
 
