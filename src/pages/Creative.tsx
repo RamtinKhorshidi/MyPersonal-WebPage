@@ -13,7 +13,10 @@ import actingAwards from '../assets/images/acting-awards.webp';
 import actingAwardCeremony from '../assets/images/acting-award-ceremony.webp';
 import actingStage from '../assets/images/acting-stage-suit.webp';
 import actingRedCarpet from '../assets/images/acting-red-carpet.webp';
-import coffeeShop from '../assets/images/coffee-shop.webp';
+import barista1 from '../assets/images/barista-1.jpg';
+import barista2 from '../assets/images/barista-2.jpg';
+import barista3 from '../assets/images/barista-3.jpg';
+import barista4 from '../assets/images/barista-4.jpg';
 
 // Placeholder content components
 const initialImages = [
@@ -25,6 +28,13 @@ const initialImages = [
     { id: 6, src: actingRedCarpet, alt: "Red Carpet Appearance" },
     { id: 7, src: actingAwardCeremony, alt: "Receiving Award - Foreign Homeland", className: "effect-shine" },
     { id: 8, src: actingAwards, alt: "Award Recognition Certificates" },
+];
+
+const baristaImages = [
+    { id: 1, src: barista1, alt: "Crafting Esspresso - Good Earth" },
+    { id: 2, src: barista2, alt: "Latte Art - Pouring" },
+    { id: 3, src: barista3, alt: "Coffee & Code - Setup" },
+    { id: 4, src: barista4, alt: "The Showman - Customer Connection" },
 ];
 
 import CreativeGallery from '../components/CreativeGallery';
@@ -144,24 +154,29 @@ const BaristaContent = () => (
         initial="hidden"
         animate="show"
         exit={{ opacity: 0, x: -20 }}
-        className="grid md:grid-cols-2 gap-8 items-center"
+        className="space-y-12"
     >
-        <motion.div variants={fadeInUp} className="order-2 md:order-1">
-            <motion.img whileHover={hoverScale} src={coffeeShop} alt="Coffee Art" className="rounded-xl shadow-lg border border-gray-800 w-full" />
-        </motion.div>
-        <motion.div variants={fadeInUp} className="order-1 md:order-2 space-y-6">
-            <h3 className="text-2xl font-bold text-primary">The Showman</h3>
-            <p className="text-gray-300 leading-relaxed">
-                At <span className="text-white font-semibold">Good Earth Coffeehouse</span>, I don't just serve coffee; I curate an experience.
-                My "Barista Showman" persona leverages inventive flair and natural charisma to turn a routine transaction into a memorable interaction.
-            </p>
-            <div className="flex gap-4">
-                <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
-                    <FaCoffee className="text-primary text-2xl mb-2" />
-                    <span className="text-xs text-gray-400">Latte Art</span>
+        {/* Intro Section - Centered */}
+        <div className="max-w-4xl mx-auto text-center mb-12">
+            <motion.div variants={fadeInUp} className="space-y-6">
+                <h3 className="text-2xl font-bold text-primary">The Showman</h3>
+                <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
+                    At <span className="text-white font-semibold">Good Earth Coffeehouse</span>, I don't just serve coffee; I curate an experience.
+                    My "Barista Showman" persona leverages inventive flair and natural charisma to turn a routine transaction into a memorable interaction.
+                </p>
+                <div className="flex justify-center gap-4">
+                    <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
+                        <FaCoffee className="text-primary text-2xl mb-2" />
+                        <span className="text-xs text-gray-400">Latte Art</span>
+                    </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
+
+        {/* Gallery Section - Full Width */}
+        <div className="w-full">
+            <CreativeGallery images={baristaImages} />
+        </div>
     </motion.div>
 );
 
