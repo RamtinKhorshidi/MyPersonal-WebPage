@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTheaterMasks, FaMusic, FaCoffee } from 'react-icons/fa';
+import { FaTheaterMasks, FaMusic, FaCoffee, FaChalkboardTeacher, FaSmile, FaMugHot } from 'react-icons/fa';
 import { pageVariants, fadeInUp, staggerContainer } from '../utils/animations';
 import CreativeTitle from '../components/CreativeTitle';
 
@@ -163,10 +163,22 @@ const BaristaContent = () => (
                 <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
                     At <span className="text-white font-semibold">Good Earth Coffeehouse</span>, I make coffee and do my best to leave people with a smile. I like adding a touch of fun and friendliness to each interaction—nothing fancy, just trying to make the moment a little nicer.
                 </p>
-                <div className="flex justify-center gap-4">
+                <div className="flex justify-center gap-4 flex-wrap">
                     <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
                         <FaCoffee className="text-primary text-2xl mb-2" />
                         <span className="text-xs text-gray-400">Latte Art</span>
+                    </div>
+                    <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
+                        <FaChalkboardTeacher className="text-primary text-2xl mb-2" />
+                        <span className="text-xs text-center text-gray-400">Training & Coaching Staff</span>
+                    </div>
+                    <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
+                        <FaSmile className="text-primary text-2xl mb-2" />
+                        <span className="text-xs text-center text-gray-400">Exceptional Customer Service</span>
+                    </div>
+                    <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
+                        <FaMugHot className="text-primary text-2xl mb-2" />
+                        <span className="text-xs text-center text-gray-400">Coffee Tasting & Flavor Expertise</span>
                     </div>
                 </div>
             </motion.div>
