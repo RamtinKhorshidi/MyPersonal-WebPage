@@ -45,27 +45,23 @@ const ActingContent = () => {
             className="space-y-12"
         >
             {/* Intro Section */}
-            <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="max-w-4xl mx-auto text-center mb-12">
                 <motion.div variants={fadeInUp} className="space-y-6">
                     <h3 className="text-2xl font-bold text-primary">The Stage</h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
                         Acting teaches empathy, presence, and the ability to listen—skills that directly translate to effective team collaboration and user-centric development.
                         Currently freelancing with Armin Productions.
+                        <br /> <br />
+                        <span className="text-sm text-gray-400">
+                            Recent Roles: Character Development Workshop (2025) • "Foreign Homeland" (2024) • Improvisation Showcase (2023)
+                        </span>
                     </p>
-                    <div className="bg-surface p-6 rounded-lg border border-gray-800">
-                        <h4 className="font-bold text-white mb-2">Recent Roles</h4>
-                        <ul className="space-y-2 text-gray-400 text-sm">
-                            <li>• Character Development Workshop (2025)</li>
-                            <li>• "Foreign Homeland" - Lead Support (2024)</li>
-                            <li>• Improvisation Showcase (2023)</li>
-                        </ul>
-                    </div>
                 </motion.div>
+            </div>
 
-                {/* New Expanding Gallery */}
-                <div className="w-full">
-                    <CreativeGallery images={images} />
-                </div>
+            {/* New Expanding Gallery - Full Width */}
+            <div className="w-full">
+                <CreativeGallery images={images} />
             </div>
 
             {/* Foreign Homeland Showcase */}
