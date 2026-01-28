@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaCamera, FaFilm, FaStar, FaVideo, FaTheaterMasks, FaAward, FaUserTie, FaRegImages } from 'react-icons/fa';
 import './CreativeGallery.css';
 
@@ -16,6 +16,13 @@ interface CreativeGalleryProps {
 const CreativeGallery = ({ images }: CreativeGalleryProps) => {
     // Determine a default active image (e.g., the first one)
     const [activeId, setActiveId] = useState<number>(images[0]?.id || 1);
+
+    // Update active state when images shuffle/load to ensure the first visible item is active by default
+    useEffect(() => {
+        if (images.length > 0) {
+            setActiveId(images[0].id);
+        }
+    }, [images]);
 
     // Map specific icons to images based on index or logic, or just cycle them
     const icons = [
