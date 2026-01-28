@@ -139,7 +139,13 @@ const Developer = () => {
                             whileHover={{ scale: 1.02 }}
                             className="bg-surface rounded-xl overflow-hidden border border-white/10 hover:border-primary transition-all shadow-lg"
                         >
-                            <img src={cert.image} alt={cert.title} className="w-full h-auto object-cover" />
+                            <div className="aspect-[4/3] w-full relative">
+                                <img
+                                    src={cert.image}
+                                    alt={cert.title}
+                                    className="w-full h-full object-cover absolute inset-0"
+                                />
+                            </div>
                             <div className="p-4 border-t border-white/5">
                                 <h3 className="text-lg font-bold text-white leading-tight">{cert.title}</h3>
                                 <p className="text-primary text-sm mt-1">{cert.issuer}</p>
