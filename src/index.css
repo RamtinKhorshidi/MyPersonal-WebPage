@@ -59,26 +59,30 @@
   }
 
   [data-theme='light'] {
-    /* LIGHT MODE - Sunset / Madder / Bistre */
-    /* Shifted from cream to richer Sand */
-    --color-background: #f7e7ce;
-    /* Champagne/Sand */
-    --color-surface: #ebd6b3;
-    /* Darker sand for cards */
-    --color-primary: #b91c1c;
-    /* Deep Red (Madder) */
-    --color-secondary: #d97706;
-    /* Amber/Gold - Less pale */
-    --color-accent: #ea580c;
-    /* Burnt Orange */
-    --color-border: rgba(185, 28, 28, 0.2);
+    /* LIGHT MODE - Madder Background / Sunset Surface / Bistre Text & Primary */
 
+    /* Background: Madder (Deep Red) */
+    --color-background: #b91c1c;
+
+    /* Surface: Sunset (Amber/Gold) */
+    --color-surface: #d97706;
+
+    /* Primary: Bistre (Dark Brown) */
+    --color-primary: #29150f;
+
+    /* Secondary & Accent: Sunset */
+    --color-secondary: #d97706;
+    --color-accent: #d97706;
+
+    /* Border: Bistre (Alpha) */
+    --color-border: rgba(41, 21, 15, 0.3);
+
+    /* Text: Bistre */
     --color-text-base: #29150f;
-    /* Very dark brown/black */
     --color-text-heading: #1a0f0a;
-    /* Almost black */
-    --color-text-muted: #5e4538;
-    /* Medium brown - High contrast */
+    /* Keeping the slightly darker Bistre for Headings */
+    --color-text-muted: rgba(41, 21, 15, 0.7);
+    /* Bistre with opacity */
   }
 
   body {
