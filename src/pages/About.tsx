@@ -42,17 +42,17 @@ const About = () => {
     const timelineData = [
         {
             year: 'Present',
-            title: 'Barista / Showman',
-            subtitle: 'Good Earth Coffeehouse',
-            description: 'Creating "performance" experiences for customers. Combining improved efficiency with genuine human connection and inventive flair.',
-            icon: FaStar
-        },
-        {
-            year: '2023 - Present',
             title: 'Front-End Developer',
             subtitle: 'Self-Taught / Zero To Mastery',
             description: 'Mastering React.js ecosystem. Building complex SPAs, learning TypeScript, and exploring modern UI/UX patterns. Bridging the gap between logic and creativity.',
             icon: FaCode
+        },
+        {
+            year: '2023 - Present',
+            title: 'Barista / Showman',
+            subtitle: 'Good Earth Coffeehouse',
+            description: 'Creating "performance" experiences for customers. Combining improved efficiency with genuine human connection and inventive flair.',
+            icon: FaStar
         },
         {
             year: '2023 - Present',
