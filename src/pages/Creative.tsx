@@ -51,9 +51,13 @@ const ActingContent = () => {
                     <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
                         Acting teaches empathy, presence, and the ability to listen—skills that directly translate to effective team collaboration and user-centric development.
                         Currently freelancing with Armin Productions.
-                        <br /> <br />
-                        <span className="text-sm text-gray-400">
-                            Recent Roles: Character Development Workshop (2025) • "Foreign Homeland" (2024) • Improvisation Showcase (2023)
+                        <span className="text-sm text-gray-400 block mt-4">
+                            <strong className="text-primary block mb-2">Recent Highlights</strong>
+                            <ul className="text-left max-w-lg mx-auto space-y-2">
+                                <li>• Live host of the official screening event for <em>Foreign Homeland</em> (Persian/English) at Bella Concert Hall, Calgary.</li>
+                                <li>• Supporting actor in <em>Foreign Homeland</em> (Won Best Actor at VIYFF).</li>
+                                <li>• Acting in the short film <em>Grandma's House</em>.</li>
+                            </ul>
                         </span>
                     </p>
                 </motion.div>
