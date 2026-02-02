@@ -22,13 +22,23 @@ const GhostSpirit: React.FC = () => {
         setYPos(generateRandomY());
     };
 
+    // Key to force re-render and restart animation
+    const [restartKey, setRestartKey] = useState(0);
+
+    const handleRestart = () => {
+        setRestartKey(prev => prev + 1);
+    };
+
     return (
         <div
+            key={restartKey}
             className="ghost-spirit"
-            role="presentation"
-            aria-hidden="true"
+            role="button"
+            aria-label="Restart ghost animation"
+            aria-hidden="false"
             style={{ '--ghost-y': yPos } as React.CSSProperties}
             onAnimationIteration={handleAnimationIteration}
+            onClick={handleRestart}
         >
             {/* Ghost Legs */}
             <div></div>

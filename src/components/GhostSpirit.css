@@ -26,7 +26,8 @@
 
     opacity: 0.9;
     mix-blend-mode: exclusion;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     z-index: 20;
 
     /* Animation */
