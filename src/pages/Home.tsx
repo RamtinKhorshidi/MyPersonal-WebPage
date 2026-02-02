@@ -51,10 +51,10 @@ const Home = () => {
                         transition={{ delay: 0.4, duration: 0.8 }}
                         className="h-16 mb-8"
                     >
-                        <p className="text-xl md:text-4xl text-gray-300 font-light flex flex-wrap justify-center gap-2">
+                        <p className="text-xl md:text-4xl text-gray-300 font-light flex flex-wrap justify-center items-center gap-2">
                             <span className="text-primary font-semibold">Code Performer</span>
-                            <span className="hidden md:inline mx-3 text-gray-600">|</span>
-                            <span className="block md:inline mt-1 md:mt-0">Front-End Developer</span>
+                            <span className="mx-2 md:mx-3 text-gray-600">|</span>
+                            <span>Front-End Developer</span>
                         </p>
                     </motion.div>
 
