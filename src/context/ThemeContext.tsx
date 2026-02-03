@@ -18,12 +18,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
             if (savedTheme) {
                 return savedTheme;
             }
-            // Check system preference
-            if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                return 'light';
-            }
         }
-        return 'dark'; // Default
+        return 'forest'; // Default
     });
 
     useEffect(() => {
