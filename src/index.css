@@ -86,6 +86,62 @@
     --color-text-muted: rgba(207, 165, 180, 0.6);
   }
 
+  [data-theme='forest'] {
+    /* THEME 3 - Ink Black / Pine Teal / Peach Glow */
+    /* Nature-inspired, organic, and welcoming */
+
+    /* Background: Ink Black (Deep Green-Black) */
+    --color-background: #081917;
+
+    /* Surface: Pine Teal (Deep Green) */
+    --color-surface: #094c41;
+
+    /* Primary: Peach Glow (Warm Orange-Pink) */
+    --color-primary: #fcb790;
+
+    /* Secondary: Pine Teal */
+    --color-secondary: #094c41;
+
+    /* Accent: Peach Glow */
+    --color-accent: #fcb790;
+
+    /* Border: Pine Teal (Alpha) */
+    --color-border: rgba(9, 76, 65, 0.4);
+
+    /* Text: Soft White/Peach */
+    --color-text-base: #e2e8f0;
+    --color-text-heading: #fcb790;
+    --color-text-muted: rgba(252, 183, 144, 0.6);
+  }
+
+  [data-theme='clay'] {
+    /* THEME 4 - Onyx / Clay Soil / Ash Grey */
+    /* Industrial, earthy, and modern */
+
+    /* Background: Onyx (Deep Black) */
+    --color-background: #0d0d0d;
+
+    /* Surface: Dark Clay/Brown Mix (Custom dark blend) */
+    --color-surface: #1a1a1a;
+
+    /* Primary: Clay Soil (Deep Red-Brown) */
+    --color-primary: #874138;
+
+    /* Secondary: Ash Grey (Cool Blue-Grey) */
+    --color-secondary: #9bbfbf;
+
+    /* Accent: Ash Grey */
+    --color-accent: #9bbfbf;
+
+    /* Border: Clay Soil (Alpha) */
+    --color-border: rgba(135, 65, 56, 0.4);
+
+    /* Text: Ash Grey */
+    --color-text-base: #9bbfbf;
+    --color-text-heading: #e2e8f0;
+    --color-text-muted: rgba(155, 191, 191, 0.6);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-text-base);

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 
-type Theme = 'dark' | 'light';
+type Theme = 'dark' | 'light' | 'forest' | 'clay';
 
 interface ThemeContextType {
     theme: Theme;
@@ -29,15 +29,19 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const root = window.document.documentElement;
 
-        // Remove both classes to ensure clean switch (if using class strategy)
-        // But we are using data-theme attribute strategy for CSS variables
+        // Clean up previous attributes just in case
         root.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
 
     }, [theme]);
 
     const toggleTheme = () => {
-        setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+        setTheme((prev) => {
+            if (prev === 'dark') return 'light';
+            if (prev === 'light') return 'forest';
+            if (prev === 'forest') return 'clay';
+            return 'dark'; // clay -> dark
+        });
     };
 
     return (
