@@ -35,6 +35,7 @@ const Footer = () => {
 
                 <div className="text-gray-600 text-sm">
                     <p>&copy; {currentYear} Ramtin Khorshidi. All rights reserved.</p>
+                    <p className="mt-2 text-gray-700">Built with React, TypeScript & Framer Motion</p>
                 </div>
             </div>
         </footer>
