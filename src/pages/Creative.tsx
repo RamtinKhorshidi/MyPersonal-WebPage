@@ -18,16 +18,18 @@ import barista2 from '../assets/images/barista-2.jpg';
 import barista3 from '../assets/images/barista-3.jpg';
 import barista4 from '../assets/images/barista-4.jpg';
 
-// Placeholder content components
+/**
+ * Initial set of images for the Acting gallery.
+ */
 const initialImages = [
-    { id: 1, src: actingGreen, alt: "Acting in my first theater" },
-    { id: 2, src: acting1, alt: "Acting Headshot" },
-    { id: 3, src: actingStage, alt: "Stage Performance" },
-    { id: 4, src: actingClapper, alt: "While getting lost in the notes" },
-    { id: 5, src: acting2, alt: "Live hosting as a bilingual MC" },
-    { id: 6, src: actingRedCarpet, alt: "Comedy performance in the Art Commons Great Hall" },
-    { id: 7, src: actingAwardCeremony, alt: "Official appearance at the red carpet event at Bella Concert Hall", className: "effect-shine" },
-    { id: 8, src: actingAwards, alt: "Receiving the Best Actor Award" },
+    { id: 1, src: actingGreen, alt: "Ramtin Khorshidi acting in his first theater production with green lighting" },
+    { id: 2, src: acting1, alt: "Professional acting headshot of Ramtin Khorshidi" },
+    { id: 3, src: actingStage, alt: "Ramtin Khorshidi performing on stage in a suit" },
+    { id: 4, src: actingClapper, alt: "Behind the scenes with a clapperboard" },
+    { id: 5, src: acting2, alt: "Ramtin Khorshidi live hosting as a bilingual MC" },
+    { id: 6, src: actingRedCarpet, alt: "Ramtin Khorshidi performing comedy at the Art Commons Great Hall" },
+    { id: 7, src: actingAwardCeremony, alt: "Ramtin Khorshidi at the red carpet event at Bella Concert Hall", className: "effect-shine" },
+    { id: 8, src: actingAwards, alt: "Ramtin Khorshidi receiving the Best Actor Award" },
 ];
 
 const baristaImages = [
