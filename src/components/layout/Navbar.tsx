@@ -38,7 +38,7 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="text-2xl font-heading font-bold text-white relative group">
+                <Link to="/" className="text-2xl font-heading font-bold text-white relative group" aria-label="Ramtin Khorshidi Home">
                     RAMTIN
                     <span className="text-primary">.</span>
                 </Link>
@@ -49,6 +49,7 @@ const Navbar = () => {
                         <Link
                             key={link.name}
                             to={link.path}
+                            aria-label={`Go to ${link.name} page`}
                             className={`text-sm font-medium transition-colors duration-300 hover:text-primary ${location.pathname === link.path ? 'text-primary' : 'text-gray-300'
                                 }`}
                         >
@@ -59,7 +60,7 @@ const Navbar = () => {
                         <ThemeToggle />
                     </div>
                     <Link to="/contact">
-                        <button className="bg-primary/90 hover:bg-primary text-background font-bold px-5 py-2 rounded-full transition-transform hover:scale-105">
+                        <button className="bg-primary/90 hover:bg-primary text-background font-bold px-5 py-2 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg">
                             Let's Talk
                         </button>
                     </Link>
