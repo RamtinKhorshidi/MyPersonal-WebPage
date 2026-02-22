@@ -9,6 +9,21 @@ import certReact from '../assets/images/certificate-react.jpg';
 import certJS from '../assets/images/certificate-js.jpg';
 import foreignHomelandImg from '../assets/images/foreign-homeland-project.jpg';
 
+/**
+ * Props for the {@link ProjectCard} component.
+ * @typedef {Object} ProjectCardProps
+ * @property {string} title - The title of the project.
+ * @property {string} description - A brief description of the project.
+ * @property {string[]} tags - A list of technologies or tags associated with the project.
+ * @property {string} [image] - The URL or imported path of the project image.
+ * @property {string} githubUrl - The URL to the GitHub repository.
+ */
+
+/**
+ * A card component to display project details, including an image, title, description, and tags.
+ * @param {ProjectCardProps} props - The component props.
+ * @returns {JSX.Element} The rendered project card.
+ */
 const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
     <motion.div
         variants={fadeInUp}
@@ -49,6 +64,11 @@ const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
     </motion.div>
 );
 
+/**
+ * The Developer page component showcasing the developer portfolio,
+ * including tech stack, certificates, and featured projects.
+ * @returns {JSX.Element} The rendered Developer page.
+ */
 const Developer = () => {
     const projects = [
         {
