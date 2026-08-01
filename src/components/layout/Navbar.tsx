@@ -38,8 +38,8 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="text-2xl font-heading font-bold text-white relative group" aria-label="Ramtin Khorshidi Home">
-                    RAMTIN
+                <Link to="/" className="text-2xl font-heading font-bold text-white relative group" aria-label="Reza Khorshidi Home">
+                    REZA
                     <span className="text-primary">.</span>
                 </Link>
 

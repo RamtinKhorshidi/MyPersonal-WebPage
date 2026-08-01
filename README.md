@@ -1,9 +1,9 @@
-# Ramtin Khorshidi - Personal Portfolio
+# Reza Khorshidi - Personal Portfolio
 
-A cinematic, high-performance personal portfolio website showcasing my dual journey as a Front-End Developer and Actor/Performer. Built with modern web technologies to deliver an immersive usage experience.
+A cinematic, high-performance personal portfolio website showcasing my dual journey as a Front-End Developer and Actor/Performer (performing as Ramtin). Built with modern web technologies to deliver an immersive usage experience.
 
 ## 🚀 Live Demo
-[ramtinkhorshidi.com](https://ramtinkhorshidi.com/)
+[rezakhorshidi.com](https://rezakhorshidi.com/)
 
 ## 🛠 Tech Stack
 - **Core**: React, TypeScript, Vite

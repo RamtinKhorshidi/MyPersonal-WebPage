@@ -14,7 +14,7 @@ const Footer = () => {
         <footer className="bg-surface py-12 border-t border-gray-800">
             <div className="container mx-auto px-6 text-center">
                 <div className="mb-8">
-                    <h2 className="text-2xl font-heading font-bold text-white mb-2">RAMTIN KHORSHIDI</h2>
+                    <h2 className="text-2xl font-heading font-bold text-white mb-2">REZA KHORSHIDI</h2>
                     <p className="text-gray-400">Developer | Actor | Barista</p>
                 </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
 
                 <div className="text-gray-600 text-sm">
-                    <p>&copy; {currentYear} Ramtin Khorshidi. All rights reserved.</p>
+                    <p>&copy; {currentYear} Reza Khorshidi. All rights reserved.</p>
                     <p className="mt-2 text-gray-700">Built with React, TypeScript & Framer Motion</p>
                 </div>
             </div>

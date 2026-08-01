@@ -40,7 +40,7 @@ const Home = () => {
                             variants={textReveal}
                             className="text-4xl md:text-8xl font-heading font-bold metallic-shine leading-tight"
                         >
-                            Ramtin Khorshidi
+                            Reza Khorshidi
                         </motion.h1>
                     </div>
 
