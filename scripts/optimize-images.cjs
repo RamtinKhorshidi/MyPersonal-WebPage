@@ -1,51 +1,49 @@
-const sharp = require('sharp');
+// Converts images to WebP (quality 80, max 1600px wide), writing each next to
+// its original. Used for the acting gallery photos.
+//
+// Usage (sharp is not a regular dependency, install it when needed):
+//   npm install --no-save sharp
+//   node scripts/optimize-images.cjs src/assets/images/photo.jpg [more files...]
 const fs = require('fs');
 const path = require('path');
 
-const srcDir = path.join(__dirname, '../src/assets/images');
-const images = [
-    'acting-1.jpg',
-    'acting-2.jpg',
-    'acting-green-mood.jpg',
-    'acting-clapperboard.jpg',
-    'acting-awards.jpg',
-    'acting-award-ceremony.jpg',
-    'acting-stage-suit.jpg',
-    'acting-red-carpet.jpg',
-    'coffee-shop.jpg'
-];
+let sharp;
+try {
+    sharp = require('sharp');
+} catch {
+    console.error('This script needs sharp: npm install --no-save sharp');
+    process.exit(1);
+}
+
+const files = process.argv.slice(2);
+if (files.length === 0) {
+    console.error('Usage: node scripts/optimize-images.cjs <image> [more images...]');
+    process.exit(1);
+}
 
 async function optimize() {
-    for (const file of images) {
-        const inputPath = path.join(srcDir, file);
-        const name = path.parse(file).name;
-        const outputPath = path.join(srcDir, `${name}.webp`);
-
+    for (const inputPath of files) {
+        if (!fs.existsSync(inputPath)) {
+            console.error(`File not found: ${inputPath}`);
+            continue;
+        }
+        const { dir, name } = path.parse(inputPath);
+        const outputPath = path.join(dir, `${name}.webp`);
         try {
-            if (!fs.existsSync(inputPath)) {
-                console.error(`File not found: ${file}`);
-                continue;
-            }
-
             const metadata = await sharp(inputPath).metadata();
-            console.log(`Processing ${file}: ${metadata.width}x${metadata.height}, ${(fs.statSync(inputPath).size / 1024 / 1024).toFixed(2)} MB`);
+            const sizeMb = (fs.statSync(inputPath).size / 1024 / 1024).toFixed(2);
+            console.log(`Processing ${inputPath}: ${metadata.width}x${metadata.height}, ${sizeMb} MB`);
 
-            let pipeline = sharp(inputPath);
-
-            // Resize if huge
+            let pipeline = sharp(inputPath).rotate(); // apply EXIF orientation
             if (metadata.width > 1600) {
                 pipeline = pipeline.resize({ width: 1600 });
             }
+            await pipeline.webp({ quality: 80 }).toFile(outputPath);
 
-            await pipeline
-                .webp({ quality: 80 })
-                .toFile(outputPath);
-
-            const newSize = fs.statSync(outputPath).size / 1024; // KB
-            console.log(`Saved ${name}.webp: ${newSize.toFixed(2)} KB`);
-
+            const newSizeKb = (fs.statSync(outputPath).size / 1024).toFixed(2);
+            console.log(`Saved ${outputPath}: ${newSizeKb} KB`);
         } catch (error) {
-            console.error(`Error processing ${file}:`, error);
+            console.error(`Error processing ${inputPath}:`, error);
         }
     }
 }
