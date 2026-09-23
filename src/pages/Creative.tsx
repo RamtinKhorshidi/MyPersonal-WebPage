@@ -74,6 +74,7 @@ const ActingContent = () => {
                     <div className="text-sm text-gray-400 max-w-2xl mx-auto">
                         <h4 className="text-primary mb-2 text-lg font-bold">Recent Roles</h4>
                         <ul className="space-y-3">
+                            <li>• Performer in <em>I Am Not Here</em> at the Calgary Fringe Festival (August 2026), directed by Saeid Asgarian and produced by Roommate Art Company.</li>
                             <li>• Live host of the official screening event for <em>Foreign Homeland</em> (Persian/English) at Bella Concert Hall, Calgary.</li>
                             <li>• Supporting actor in <em>Foreign Homeland</em> (Won Best Actor at VIYFF).</li>
                             <li>• Acting in the short film <em>Grandma's House</em>.</li>
@@ -192,7 +193,7 @@ const BaristaContent = () => (
             <motion.div variants={fadeInUp} className="space-y-6">
                 <h3 className="text-2xl font-bold text-primary">The Showman</h3>
                 <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
-                    At <span className="text-white font-semibold">Good Earth Coffeehouse</span>, I make coffee and do my best to leave people with a smile. I like adding a touch of fun and friendliness to each interaction—nothing fancy, just trying to make the moment a little nicer.
+                    For two years at <span className="text-white font-semibold">Good Earth Coffeehouse</span>, I made coffee and did my best to leave people with a smile, adding a touch of fun and friendliness to each interaction. Those conversations across the counter are also what led, one referral at a time, to my role at RBC.
                 </p>
                 <div className="flex justify-center gap-4 flex-wrap">
                     <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
