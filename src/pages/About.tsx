@@ -32,8 +32,8 @@ const TimelineItem = ({ year, title, subtitle, description, icon: Icon }: any) =
             className="md:col-span-2 bg-surface p-6 rounded-lg border border-gray-800 hover:border-primary/50 transition-colors shadow-sm"
         >
             <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
-            <p className="text-secondary text-sm font-medium mb-3">{subtitle}</p>
-            <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+            <p className="text-on-surface-accent text-sm font-medium mb-3">{subtitle}</p>
+            <p className="text-on-surface-muted text-sm leading-relaxed">{description}</p>
         </motion.div>
     </motion.div>
 );

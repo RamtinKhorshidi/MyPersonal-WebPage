@@ -139,7 +139,7 @@ const MusicContent = () => (
             <div className="bg-surface border border-gray-800 rounded-xl p-8 flex flex-col items-center justify-center min-h-[250px] hover:border-primary/50 transition-colors group">
                 <FaMusic className="text-6xl text-gray-700 mb-6 group-hover:text-primary transition-colors" />
                 <h4 className="text-xl font-bold text-white mb-2">SoundCloud</h4>
-                <p className="text-gray-400 text-sm mb-6">Original compositions & beats</p>
+                <p className="text-on-surface-muted text-sm mb-6">Original compositions & beats</p>
                 <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -156,7 +156,7 @@ const MusicContent = () => (
             <div className="bg-surface border border-gray-800 rounded-xl p-8 flex flex-col items-center justify-center min-h-[250px] hover:border-[#229ED9] transition-colors group">
                 <FaTelegram className="text-6xl text-gray-700 mb-6 group-hover:text-[#229ED9] transition-colors" />
                 <h4 className="text-xl font-bold text-white mb-2">Telegram Channel</h4>
-                <p className="text-gray-400 text-sm mb-6">Ramtin Khorshidi org Channel</p>
+                <p className="text-on-surface-muted text-sm mb-6">Ramtin Khorshidi org Channel</p>
                 <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -190,19 +190,19 @@ const BaristaContent = () => (
                 <div className="flex justify-center gap-4 flex-wrap">
                     <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
                         <FaCoffee className="text-primary text-2xl mb-2" />
-                        <span className="text-xs text-gray-400">Latte Art</span>
+                        <span className="text-xs text-on-surface-muted">Latte Art</span>
                     </div>
                     <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
                         <FaChalkboardTeacher className="text-primary text-2xl mb-2" />
-                        <span className="text-xs text-center text-gray-400">Training & Coaching Staff</span>
+                        <span className="text-xs text-center text-on-surface-muted">Training & Coaching Staff</span>
                     </div>
                     <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
                         <FaSmile className="text-primary text-2xl mb-2" />
-                        <span className="text-xs text-center text-gray-400">Exceptional Customer Service</span>
+                        <span className="text-xs text-center text-on-surface-muted">Exceptional Customer Service</span>
                     </div>
                     <div className="flex flex-col items-center p-4 bg-surface rounded-lg border border-gray-800 min-w-[100px]">
                         <FaMugHot className="text-primary text-2xl mb-2" />
-                        <span className="text-xs text-center text-gray-400">Coffee Tasting & Flavor Expertise</span>
+                        <span className="text-xs text-center text-on-surface-muted">Coffee Tasting & Flavor Expertise</span>
                     </div>
                 </div>
             </motion.div>
@@ -247,7 +247,7 @@ const Creative = () => {
                         onClick={() => setActiveTab(tab.id)}
                         className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all ${activeTab === tab.id
                             ? 'bg-primary text-background'
-                            : 'bg-surface text-gray-400 hover:text-white hover:bg-gray-800'
+                            : 'bg-surface text-on-surface-muted hover:text-white hover:bg-gray-800'
                             }`}
                     >
                         <tab.icon />

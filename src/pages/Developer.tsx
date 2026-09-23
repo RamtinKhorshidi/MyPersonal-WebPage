@@ -40,7 +40,7 @@ const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
         </div>
         <div className="p-6 flex-grow flex flex-col">
             <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{title}</h3>
-            <p className="text-gray-400 text-sm mb-4 flex-grow">{description}</p>
+            <p className="text-on-surface-muted text-sm mb-4 flex-grow">{description}</p>
 
             <div className="flex flex-wrap gap-2 mb-6">
                 {tags.map((tag: string) => (
@@ -162,7 +162,7 @@ const Developer = () => {
                             </div>
                             <div className="p-4 border-t border-white/5">
                                 <h3 className="text-lg font-bold text-white leading-tight">{cert.title}</h3>
-                                <p className="text-primary text-sm mt-1">{cert.issuer}</p>
+                                <p className="text-on-surface-accent text-sm mt-1">{cert.issuer}</p>
                             </div>
                         </motion.div>
                     ))}

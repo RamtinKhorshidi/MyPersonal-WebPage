@@ -14,6 +14,9 @@
   --color-text-base: var(--color-text-base);
   --color-text-heading: var(--color-text-heading);
   --color-text-muted: var(--color-text-muted);
+  /* Text placed on bg-surface cards; each theme picks values with >= 4.5:1 contrast */
+  --color-on-surface-muted: var(--color-on-surface-muted);
+  --color-on-surface-accent: var(--color-on-surface-accent);
 
   --animate-fade-in: fadeIn 0.5s ease-out forwards;
   --animate-slide-up: slideUp 0.5s ease-out forwards;
@@ -68,6 +71,8 @@
     --color-text-base: #e2e8f0;
     --color-text-heading: #fcb790;
     --color-text-muted: rgba(252, 183, 144, 0.6);
+    --color-on-surface-muted: #cfd8d5;
+    --color-on-surface-accent: #fcb790;
   }
 
   [data-theme='light'] {
@@ -96,6 +101,8 @@
     --color-text-base: #cfa5b4;
     --color-text-heading: #cfa5b4;
     --color-text-muted: rgba(207, 165, 180, 0.6);
+    --color-on-surface-muted: #dfe6ea;
+    --color-on-surface-accent: #f0cfdb;
   }
 
   [data-theme='dark'] {
@@ -112,6 +119,8 @@
     --color-text-base: #e2e8f0;
     --color-text-heading: #ffffff;
     --color-text-muted: #94a3b8;
+    --color-on-surface-muted: #aab4c3;
+    --color-on-surface-accent: #ff9f5a;
   }
 
   [data-theme='clay'] {
@@ -140,6 +149,8 @@
     --color-text-base: #9bbfbf;
     --color-text-heading: #e2e8f0;
     --color-text-muted: rgba(155, 191, 191, 0.6);
+    --color-on-surface-muted: #9bbfbf;
+    --color-on-surface-accent: #c98a80;
   }
 
   body {

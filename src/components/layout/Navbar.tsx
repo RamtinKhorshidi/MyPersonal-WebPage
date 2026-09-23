@@ -97,7 +97,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
                             <div className="pt-4 border-t border-gray-800 w-full flex justify-between items-center">
-                                <span className="text-gray-400">Switch Theme</span>
+                                <span className="text-on-surface-muted">Switch Theme</span>
                                 <ThemeToggle />
                             </div>
                             <Link to="/contact" className="w-full">

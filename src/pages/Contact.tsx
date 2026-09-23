@@ -71,8 +71,8 @@ const Contact = () => {
                                     <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">Based In</h3>
                                     <EarthGlobe />
                                 </div>
-                                <p className="text-gray-400">Calgary, Alberta, Canada</p>
-                                <p className="text-sm text-gray-500 mt-1">Open to remote & relocation</p>
+                                <p className="text-on-surface-muted">Calgary, Alberta, Canada</p>
+                                <p className="text-sm text-on-surface-muted mt-1">Open to remote & relocation</p>
                             </div>
                         </div>
 
@@ -82,7 +82,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-1">Email</h3>
-                                <a href="mailto:rkhorshidi2003@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                                <a href="mailto:rkhorshidi2003@gmail.com" className="text-on-surface-muted hover:text-white transition-colors">
                                     rkhorshidi2003@gmail.com
                                 </a>
                             </div>
@@ -104,7 +104,7 @@ const Contact = () => {
                 >
                     <form ref={form} onSubmit={sendEmail} className="space-y-6">
                         <div>
-                            <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                            <label htmlFor="name" className="block text-sm font-medium text-on-surface-muted mb-2">Name</label>
                             <motion.input
                                 whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
                                 type="text"
@@ -116,7 +116,7 @@ const Contact = () => {
                             />
                         </div>
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                            <label htmlFor="email" className="block text-sm font-medium text-on-surface-muted mb-2">Email</label>
                             <motion.input
                                 whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
                                 type="email"
@@ -128,7 +128,7 @@ const Contact = () => {
                             />
                         </div>
                         <div>
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                            <label htmlFor="message" className="block text-sm font-medium text-on-surface-muted mb-2">Message</label>
                             <motion.textarea
                                 whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
                                 id="message"

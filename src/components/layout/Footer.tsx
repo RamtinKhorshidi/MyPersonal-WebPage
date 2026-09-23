@@ -15,7 +15,7 @@ const Footer = () => {
             <div className="container mx-auto px-6 text-center">
                 <div className="mb-8">
                     <h2 className="text-2xl font-heading font-bold text-white mb-2">REZA KHORSHIDI</h2>
-                    <p className="text-gray-400">Developer | Actor | Barista</p>
+                    <p className="text-on-surface-muted">Developer | Actor | Barista</p>
                 </div>
 
                 <div className="flex justify-center space-x-6 mb-8">
@@ -25,7 +25,7 @@ const Footer = () => {
                             href={social.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-primary transition-colors duration-300 text-2xl"
+                            className="text-on-surface-muted hover:text-primary transition-colors duration-300 text-2xl"
                             aria-label={social.label}
                         >
                             <social.icon />
@@ -33,9 +33,9 @@ const Footer = () => {
                     ))}
                 </div>
 
-                <div className="text-gray-600 text-sm">
+                <div className="text-on-surface-muted text-sm">
                     <p>&copy; {currentYear} Reza Khorshidi. All rights reserved.</p>
-                    <p className="mt-2 text-gray-700">Built with React, TypeScript & Framer Motion</p>
+                    <p className="mt-2 text-xs">Built with React, TypeScript & Framer Motion</p>
                 </div>
             </div>
         </footer>
