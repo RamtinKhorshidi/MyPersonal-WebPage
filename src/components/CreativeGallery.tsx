@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaCamera, FaFilm, FaStar, FaVideo, FaTheaterMasks, FaAward, FaUserTie, FaRegImages } from 'react-icons/fa';
 import './CreativeGallery.css';
 
@@ -14,15 +14,9 @@ interface CreativeGalleryProps {
 }
 
 const CreativeGallery = ({ images }: CreativeGalleryProps) => {
-    // Determine a default active image (e.g., the first one)
-    const [activeId, setActiveId] = useState<number>(images[0]?.id || 1);
-
-    // Update active state when images shuffle/load to ensure the first visible item is active by default
-    useEffect(() => {
-        if (images.length > 0) {
-            setActiveId(images[0].id);
-        }
-    }, [images]);
+    // Until the visitor picks one, the first visible image is active.
+    const [selectedId, setSelectedId] = useState<number | null>(null);
+    const activeId = images.some((img) => img.id === selectedId) ? selectedId : images[0]?.id;
 
     // Map specific icons to images based on index or logic, or just cycle them
     const icons = [
@@ -47,13 +41,13 @@ const CreativeGallery = ({ images }: CreativeGalleryProps) => {
                         <div
                             key={img.id}
                             className={`option ${isActive ? 'active' : ''}`}
-                            onClick={() => setActiveId(img.id)}
+                            onClick={() => setSelectedId(img.id)}
                             role="button"
                             tabIndex={0}
                             aria-label={img.alt}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' || e.key === ' ') {
-                                    setActiveId(img.id);
+                                    setSelectedId(img.id);
                                 }
                             }}
                         >

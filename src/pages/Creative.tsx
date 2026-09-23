@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTheaterMasks, FaMusic, FaCoffee, FaChalkboardTeacher, FaSmile, FaMugHot, FaTelegram } from 'react-icons/fa';
 import { pageVariants, fadeInUp, staggerContainer } from '../utils/animations';
@@ -41,12 +41,19 @@ const baristaImages = [
 
 import CreativeGallery from '../components/CreativeGallery';
 
-const ActingContent = () => {
-    const [images, setImages] = useState(initialImages);
+/** Unbiased Fisher-Yates shuffle; returns a new array. */
+const shuffle = <T,>(items: T[]): T[] => {
+    const result = [...items];
+    for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+};
 
-    useEffect(() => {
-        setImages(prev => [...prev].sort(() => Math.random() - 0.5));
-    }, []);
+const ActingContent = () => {
+    // Shuffle once on mount, without a second render.
+    const [images] = useState(() => shuffle(initialImages));
 
     return (
         <motion.div
@@ -63,15 +70,15 @@ const ActingContent = () => {
                     <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
                         Acting teaches empathy, presence, and the ability to listen—skills that directly translate to effective team collaboration and user-centric development.
                         Currently freelancing with Armin Productions.
-                        <span className="text-sm text-gray-400 block mt-4">
-                            <strong className="text-primary block mb-2 text-lg">Recent Roles</strong>
-                            <ul className="text-center max-w-2xl mx-auto space-y-3">
-                                <li>• Live host of the official screening event for <em>Foreign Homeland</em> (Persian/English) at Bella Concert Hall, Calgary.</li>
-                                <li>• Supporting actor in <em>Foreign Homeland</em> (Won Best Actor at VIYFF).</li>
-                                <li>• Acting in the short film <em>Grandma's House</em>.</li>
-                            </ul>
-                        </span>
                     </p>
+                    <div className="text-sm text-gray-400 max-w-2xl mx-auto">
+                        <h4 className="text-primary mb-2 text-lg font-bold">Recent Roles</h4>
+                        <ul className="space-y-3">
+                            <li>• Live host of the official screening event for <em>Foreign Homeland</em> (Persian/English) at Bella Concert Hall, Calgary.</li>
+                            <li>• Supporting actor in <em>Foreign Homeland</em> (Won Best Actor at VIYFF).</li>
+                            <li>• Acting in the short film <em>Grandma's House</em>.</li>
+                        </ul>
+                    </div>
                 </motion.div>
             </div>
 
@@ -238,14 +245,14 @@ const Creative = () => {
             </motion.div>
 
             {/* Tabs */}
-            <motion.div variants={fadeInUp} className="flex justify-center mb-12 space-x-4 md:space-x-8">
+            <motion.div variants={fadeInUp} className="flex flex-wrap justify-center mb-12 gap-3 md:gap-8">
                 {tabs.map((tab) => (
                     <motion.button
                         key={tab.id}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all ${activeTab === tab.id
+                        className={`flex items-center gap-2 px-4 md:px-6 py-3 rounded-full font-bold transition-all ${activeTab === tab.id
                             ? 'bg-primary text-background'
                             : 'bg-surface text-on-surface-muted hover:text-white hover:bg-gray-800'
                             }`}
