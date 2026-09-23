@@ -14,14 +14,17 @@ const Navbar = () => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
-    useEffect(() => {
+    // Close the mobile menu on route change. Adjusting state during render
+    // (rather than in an effect) avoids an extra render pass.
+    const [menuPath, setMenuPath] = useState(location.pathname);
+    if (menuPath !== location.pathname) {
+        setMenuPath(location.pathname);
         setIsOpen(false);
-    }, [location]);
+    }
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -71,6 +74,7 @@ const Navbar = () => {
                     className="md:hidden text-white text-2xl"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle Menu"
+                    aria-expanded={isOpen}
                 >
                     {isOpen ? <HiX /> : <HiMenuAlt3 />}
                 </button>

@@ -9,22 +9,26 @@ import certReact from '../assets/images/certificate-react.jpg';
 import certJS from '../assets/images/certificate-js.jpg';
 import foreignHomelandImg from '../assets/images/foreign-homeland-project.jpg';
 
-/**
- * Props for the {@link ProjectCard} component.
- * @typedef {Object} ProjectCardProps
- * @property {string} title - The title of the project.
- * @property {string} description - A brief description of the project.
- * @property {string[]} tags - A list of technologies or tags associated with the project.
- * @property {string} [image] - The URL or imported path of the project image.
- * @property {string} githubUrl - The URL to the GitHub repository.
- */
+/** Props for the {@link ProjectCard} component. */
+interface ProjectCardProps {
+    /** The title of the project. */
+    title: string;
+    /** A brief description of the project. */
+    description: string;
+    /** Technologies or tags associated with the project. */
+    tags: string[];
+    /** The imported path of the project image. */
+    image: string;
+    /** The URL to the GitHub repository. */
+    githubUrl: string;
+}
 
 /**
  * A card component to display project details, including an image, title, description, and tags.
  * @param {ProjectCardProps} props - The component props.
  * @returns {JSX.Element} The rendered project card.
  */
-const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
+const ProjectCard = ({ title, description, tags, image, githubUrl }: ProjectCardProps) => (
     <motion.div
         variants={fadeInUp}
         whileHover={hoverScale}
@@ -33,8 +37,9 @@ const ProjectCard = ({ title, description, tags, image, githubUrl }: any) => (
         <div className="h-48 overflow-hidden relative">
             <div className="absolute inset-0 bg-background/50 group-hover:bg-transparent transition-colors z-10" />
             <img
-                src={image || 'https://via.placeholder.com/600x400'}
+                src={image}
                 alt={title}
+                loading="lazy"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
             />
         </div>
@@ -157,6 +162,7 @@ const Developer = () => {
                                 <img
                                     src={cert.image}
                                     alt={cert.title}
+                                    loading="lazy"
                                     className="w-full h-full object-cover absolute inset-0"
                                 />
                             </div>

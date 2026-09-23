@@ -1,8 +1,17 @@
 import { motion } from 'framer-motion';
 import { FaBriefcase, FaStar, FaCode, FaTheaterMasks } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
 import { pageVariants, fadeInUp, staggerContainer } from '../utils/animations';
 
-const TimelineItem = ({ year, title, subtitle, description, icon: Icon }: any) => (
+interface TimelineItemProps {
+    year: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    icon: IconType;
+}
+
+const TimelineItem = ({ year, title, subtitle, description, icon: Icon }: TimelineItemProps) => (
     <motion.div
         variants={fadeInUp}
         className="relative pl-8 md:pl-0 md:grid md:grid-cols-5 gap-8 mb-12 items-start group"
