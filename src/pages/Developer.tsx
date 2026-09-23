@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaReact, FaJs, FaHtml5, FaCss3Alt, FaGitAlt } from 'react-icons/fa';
+import { FaGithub, FaReact, FaJs, FaHtml5, FaCss3Alt, FaGitAlt, FaExternalLinkAlt } from 'react-icons/fa';
 import { SiTailwindcss, SiTypescript } from 'react-icons/si';
 import { pageVariants, staggerContainer, fadeInUp, hoverScale } from '../utils/animations';
 
@@ -21,6 +21,8 @@ interface ProjectCardProps {
     image: string;
     /** The URL to the GitHub repository. */
     githubUrl: string;
+    /** The URL of the live site, if deployed. */
+    liveUrl?: string;
 }
 
 /**
@@ -28,7 +30,7 @@ interface ProjectCardProps {
  * @param {ProjectCardProps} props - The component props.
  * @returns {JSX.Element} The rendered project card.
  */
-const ProjectCard = ({ title, description, tags, image, githubUrl }: ProjectCardProps) => (
+const ProjectCard = ({ title, description, tags, image, githubUrl, liveUrl }: ProjectCardProps) => (
     <motion.div
         variants={fadeInUp}
         whileHover={hoverScale}
@@ -64,6 +66,16 @@ const ProjectCard = ({ title, description, tags, image, githubUrl }: ProjectCard
                 >
                     <FaGithub /> Code
                 </a>
+                {liveUrl && (
+                    <a
+                        href={liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-bold text-white hover:text-primary transition-colors"
+                    >
+                        <FaExternalLinkAlt /> Live
+                    </a>
+                )}
             </div>
         </div>
     </motion.div>
@@ -77,16 +89,25 @@ const ProjectCard = ({ title, description, tags, image, githubUrl }: ProjectCard
 const Developer = () => {
     const projects = [
         {
+            title: 'rezakhorshidi.com',
+            description: 'This portfolio. A React and TypeScript single-page app with four colour themes, Framer Motion page transitions, prerendered routes for clean URLs and link previews, and a custom domain on GitHub Pages.',
+            tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+            image: '/og-image.jpg',
+            githubUrl: 'https://github.com/RamtinKhorshidi/MyPersonal-WebPage',
+            liveUrl: 'https://rezakhorshidi.com',
+        },
+        {
             title: 'Foreign Homeland',
             description: 'A dedicated website for the short film "Foreign Homeland", exploring themes of identity and belonging. This project showcases a responsive design and seamless user experience, serving as a digital hub for the film\'s promotion and audience engagement.',
             tags: ['JavaScript', 'HTML', 'CSS', 'Firebase'],
             image: foreignHomelandImg,
             githubUrl: 'https://github.com/RamtinKhorshidi/Foreign-Homeland',
-        }
+            liveUrl: 'https://foreign-homeland-web.web.app',
+        },
     ];
 
     const certificates = [
-        { title: 'Complete React Developer', issuer: 'Udemy', image: certReact },
+        { title: 'Complete React Developer', issuer: 'Zero To Mastery · Udemy', image: certReact },
         { title: 'JavaScript Algorithms and Data Structures', issuer: 'freeCodeCamp', image: certJS },
     ];
 
