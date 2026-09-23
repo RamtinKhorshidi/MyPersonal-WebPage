@@ -1,38 +1,56 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
-import emailjs from '@emailjs/browser';
 import { pageVariants, fadeInUp, staggerContainer } from '../utils/animations';
 import EarthGlobe from '../components/EarthGlobe';
 
+const CONTACT_EMAIL = 'rkhorshidi2003@gmail.com';
+
+// The form sends through EmailJS when these build-time variables are set
+// (see .env.example). Without them it opens the visitor's email app with the
+// message already filled in, so the form never dead-ends.
+const EMAILJS = {
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+};
+const emailJsEnabled = Boolean(EMAILJS.serviceId && EMAILJS.templateId && EMAILJS.publicKey);
+
+type Status = 'idle' | 'sent' | 'mail-app' | 'error';
+
 const Contact = () => {
-    const form = useRef<HTMLFormElement>(null);
     const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [status, setStatus] = useState<Status>('idle');
 
-    const sendEmail = (e: React.FormEvent) => {
+    const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const formEl = e.currentTarget;
+
+        if (!emailJsEnabled) {
+            const data = new FormData(formEl);
+            const name = String(data.get('user_name') ?? '').trim();
+            const from = String(data.get('user_email') ?? '').trim();
+            const message = String(data.get('message') ?? '').trim();
+            const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+            const body = encodeURIComponent(`${message}\n\n- ${name} (${from})`);
+            window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+            setStatus('mail-app');
+            return;
+        }
+
         setLoading(true);
-
-        // Replace these with your actual Service ID, Template ID, and Public Key from EmailJS
-        // ideally via import.meta.env.VITE_EMAILJS_SERVICE_ID etc.
-        const SERVICE_ID = 'service_id_placeholder';
-        const TEMPLATE_ID = 'template_id_placeholder';
-        const PUBLIC_KEY = 'public_key_placeholder';
-
-        if (form.current) {
-            emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
-                .then((result) => {
-                    console.log(result.text);
-                    setLoading(false);
-                    setStatus('success');
-                    if (form.current) form.current.reset();
-                    setTimeout(() => setStatus('idle'), 5000);
-                }, (error) => {
-                    console.log(error.text);
-                    setLoading(false);
-                    setStatus('error');
-                });
+        try {
+            // Loaded on demand so visitors who never submit don't download it.
+            const { default: emailjs } = await import('@emailjs/browser');
+            await emailjs.sendForm(EMAILJS.serviceId!, EMAILJS.templateId!, formEl, EMAILJS.publicKey!);
+            formEl.reset();
+            setStatus('sent');
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch {
+            setStatus('error');
+        } finally {
+            setLoading(false);
         }
     };
     return (
@@ -72,7 +90,6 @@ const Contact = () => {
                                     <EarthGlobe />
                                 </div>
                                 <p className="text-on-surface-muted">Calgary, Alberta, Canada</p>
-                                <p className="text-sm text-on-surface-muted mt-1">Open to remote & relocation</p>
                             </div>
                         </div>
 
@@ -82,8 +99,8 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-1">Email</h3>
-                                <a href="mailto:rkhorshidi2003@gmail.com" className="text-on-surface-muted hover:text-white transition-colors">
-                                    rkhorshidi2003@gmail.com
+                                <a href={`mailto:${CONTACT_EMAIL}`} className="text-on-surface-muted hover:text-white transition-colors">
+                                    {CONTACT_EMAIL}
                                 </a>
                             </div>
                         </div>
@@ -92,7 +109,8 @@ const Contact = () => {
                     <div className="p-8 rounded-2xl bg-gradient-to-br from-primary/20 to-blue-900/20 border border-white/5">
                         <h3 className="text-2xl font-bold text-white mb-4">Let's Create Something.</h3>
                         <p className="text-gray-300">
-                            I am currently available for freelance projects and full-time opportunities.
+                            Open to freelance web projects, creative collaborations, and conversations at the
+                            intersection of finance and technology.
                         </p>
                     </div>
                 </motion.div>
@@ -102,7 +120,7 @@ const Contact = () => {
                     variants={fadeInUp}
                     className="bg-surface p-8 rounded-2xl border border-gray-800"
                 >
-                    <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                    <form onSubmit={sendEmail} className="space-y-6">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-on-surface-muted mb-2">Name</label>
                             <motion.input
@@ -140,8 +158,21 @@ const Contact = () => {
                             ></motion.textarea>
                         </div>
 
-                        {status === 'success' && <p className="text-green-500 text-sm">Message sent successfully!</p>}
-                        {status === 'error' && <p className="text-red-500 text-sm">Failed to send message. Please try again.</p>}
+                        <div aria-live="polite" className="text-sm">
+                            {status === 'sent' && <p className="text-green-400">Message sent. Thank you, I'll get back to you soon.</p>}
+                            {status === 'mail-app' && (
+                                <p className="text-on-surface-muted">
+                                    Your email app should open with the message ready to send. If nothing happened,
+                                    email me at <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
+                                </p>
+                            )}
+                            {status === 'error' && (
+                                <p className="text-red-300">
+                                    The message couldn't be sent. Please email me directly at{' '}
+                                    <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
+                                </p>
+                            )}
+                        </div>
 
                         <motion.button
                             whileHover={{ scale: 1.02 }}
