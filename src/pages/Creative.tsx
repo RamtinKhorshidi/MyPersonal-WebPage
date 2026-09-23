@@ -171,7 +171,7 @@ const MusicContent = () => (
                     href="https://t.me/sedaye_ramtin"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#229ED9] hover:bg-[#1e8dbf] text-white font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2 shadow-lg w-full justify-center"
+                    className="bg-[#229ED9] hover:brightness-110 text-background font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2 shadow-lg w-full justify-center"
                 >
                     <FaTelegram /> Join Channel
                 </motion.a>

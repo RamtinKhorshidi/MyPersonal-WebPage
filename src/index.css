@@ -133,8 +133,8 @@
     /* Surface: Dark Clay/Brown Mix (Custom dark blend) */
     --color-surface: #1a1a1a;
 
-    /* Primary: Clay Soil (Deep Red-Brown) */
-    --color-primary: #874138;
+    /* Primary: Terracotta clay (lightened from #874138 for >= 4.5:1 text contrast) */
+    --color-primary: #c1665a;
 
     /* Secondary: Ash Grey (Cool Blue-Grey) */
     --color-secondary: #9bbfbf;
