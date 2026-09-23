@@ -8,6 +8,8 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
+    // GitHub Pages may serve /about/ with a trailing slash; treat it as /about.
+    const currentPath = location.pathname.replace(/\/+$/, '') || '/';
 
     // Handle scroll effect
     useEffect(() => {
@@ -53,7 +55,7 @@ const Navbar = () => {
                             key={link.name}
                             to={link.path}
                             aria-label={`Go to ${link.name} page`}
-                            className={`text-sm font-medium transition-colors duration-300 hover:text-primary ${location.pathname === link.path ? 'text-primary' : 'text-gray-300'
+                            className={`text-sm font-medium transition-colors duration-300 hover:text-primary ${currentPath === link.path ? 'text-primary' : 'text-gray-300'
                                 }`}
                         >
                             {link.name}
@@ -94,7 +96,7 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.path}
-                                    className={`text-lg font-medium ${location.pathname === link.path ? 'text-primary' : 'text-gray-300'
+                                    className={`text-lg font-medium ${currentPath === link.path ? 'text-primary' : 'text-gray-300'
                                         }`}
                                 >
                                     {link.name}

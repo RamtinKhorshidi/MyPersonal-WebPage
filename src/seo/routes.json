@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/",
+    "title": "Reza Khorshidi | Developer, Actor & Client Advisor",
+    "description": "Reza (Ramtin) Khorshidi: Calgary front-end developer, award-winning actor and client advisor at RBC, working where finance meets technology."
+  },
+  {
+    "path": "/developer",
+    "title": "Development | Reza Khorshidi",
+    "description": "React and TypeScript projects, certificates and tech stack from Reza Khorshidi, a front-end developer in Calgary."
+  },
+  {
+    "path": "/creative",
+    "title": "Creative Journey | Reza Khorshidi",
+    "description": "Acting, hosting and music by Reza (Ramtin) Khorshidi: Best Actor at VIYFF for Foreign Homeland and a Calgary Fringe performer in I Am Not Here."
+  },
+  {
+    "path": "/about",
+    "title": "About | Reza Khorshidi",
+    "description": "From Sobeys to Good Earth Coffeehouse to RBC: how Reza Khorshidi built a career across technology, performance and finance in Calgary."
+  },
+  {
+    "path": "/contact",
+    "title": "Contact | Reza Khorshidi",
+    "description": "Get in touch with Reza Khorshidi about freelance web projects, creative collaborations, or finance and technology."
+  }
+]
