@@ -90,7 +90,7 @@ const ActingContent = () => {
             {/* Foreign Homeland Showcase */}
             <motion.div
                 variants={fadeInUp}
-                className="relative bg-gradient-to-r from-[#1a1a40] to-surface border-l-4 border-primary rounded-r-xl p-8 shadow-2xl overflow-hidden group"
+                className="relative bg-gradient-to-r from-background to-surface border-l-4 border-primary rounded-r-xl p-8 shadow-2xl overflow-hidden group"
             >
                 <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
                     <div className="space-y-4 max-w-2xl">
@@ -110,7 +110,7 @@ const ActingContent = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex-shrink-0 bg-primary hover:bg-yellow-500 text-background font-bold py-4 px-8 rounded-full shadow-lg transition-all flex items-center gap-2"
+                        className="flex-shrink-0 bg-primary hover:brightness-110 text-background font-bold py-4 px-8 rounded-full shadow-lg transition-all flex items-center gap-2"
                     >
                         <span>Watch Foreign Homeland</span>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -153,7 +153,7 @@ const MusicContent = () => (
                     href="https://soundcloud.com/4P0DTGItgesHB8IBmC"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary hover:bg-yellow-500 text-background font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2 shadow-lg w-full justify-center"
+                    className="bg-primary hover:brightness-110 text-background font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2 shadow-lg w-full justify-center"
                 >
                     <FaMusic /> Listen on SoundCloud
                 </motion.a>

@@ -1,5 +1,5 @@
-import { useTheme } from '../context/ThemeContext';
-import { FaMoon, FaSun, FaLeaf, FaLayerGroup } from 'react-icons/fa';
+import { useTheme } from '../context/theme';
+import { FaMoon, FaGem, FaLeaf, FaLayerGroup } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ThemeToggle.css';
 
@@ -8,15 +8,15 @@ const ThemeToggle = () => {
 
     // Map themes to Icons
     // Dark -> Moon
-    // Light -> Sun
+    // Orchid -> Gem
     // Forest -> Leaf
     // Clay -> Layers/Stack
     const getIcon = () => {
         switch (theme) {
             case 'dark':
                 return <FaMoon className="theme-icon text-primary" />;
-            case 'light':
-                return <FaSun className="theme-icon text-primary" />;
+            case 'orchid':
+                return <FaGem className="theme-icon text-primary" />;
             case 'forest':
                 return <FaLeaf className="theme-icon text-primary" />;
             case 'clay':

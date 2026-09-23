@@ -106,7 +106,7 @@ const Contact = () => {
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-on-surface-muted mb-2">Name</label>
                             <motion.input
-                                whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
+                                whileFocus={{ scale: 1.01 }}
                                 type="text"
                                 id="name"
                                 name="user_name"
@@ -118,7 +118,7 @@ const Contact = () => {
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-on-surface-muted mb-2">Email</label>
                             <motion.input
-                                whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
+                                whileFocus={{ scale: 1.01 }}
                                 type="email"
                                 id="email"
                                 name="user_email"
@@ -130,7 +130,7 @@ const Contact = () => {
                         <div>
                             <label htmlFor="message" className="block text-sm font-medium text-on-surface-muted mb-2">Message</label>
                             <motion.textarea
-                                whileFocus={{ scale: 1.01, borderColor: "#fe7f2d" }}
+                                whileFocus={{ scale: 1.01 }}
                                 id="message"
                                 name="message"
                                 required
@@ -148,7 +148,7 @@ const Contact = () => {
                             whileTap={{ scale: 0.98 }}
                             type="submit"
                             disabled={loading}
-                            className={`w-full bg-primary hover:bg-yellow-500 text-background font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`w-full bg-primary hover:brightness-110 text-background font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                             <FaPaperPlane />
                             {loading ? 'Sending...' : 'Send Message'}

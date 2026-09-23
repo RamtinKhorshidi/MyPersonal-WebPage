@@ -1,43 +1,40 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
+import { DEFAULT_THEME, THEMES, ThemeContext, isTheme } from './theme';
+import type { Theme } from './theme';
 
-type Theme = 'dark' | 'light' | 'forest' | 'clay';
+const STORAGE_KEY = 'theme';
 
-interface ThemeContextType {
-    theme: Theme;
-    toggleTheme: () => void;
-}
+/** Themes saved under an older name, mapped to their current name. */
+const LEGACY_THEMES: Record<string, Theme> = { light: 'orchid' };
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+// Storage can be unavailable (private mode, blocked site data), so every
+// access is guarded and the site falls back to the default theme.
+const readStoredTheme = (): Theme => {
+    try {
+        const saved = window.localStorage.getItem(STORAGE_KEY);
+        if (saved && LEGACY_THEMES[saved]) return LEGACY_THEMES[saved];
+        if (isTheme(saved)) return saved;
+    } catch {
+        // ignore and use the default
+    }
+    return DEFAULT_THEME;
+};
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [theme, setTheme] = useState<Theme>(() => {
-        // Check localStorage
-        if (typeof window !== 'undefined') {
-            const savedTheme = localStorage.getItem('theme') as Theme;
-            if (savedTheme) {
-                return savedTheme;
-            }
-        }
-        return 'forest'; // Default
-    });
+    const [theme, setTheme] = useState<Theme>(readStoredTheme);
 
     useEffect(() => {
-        const root = window.document.documentElement;
-
-        // Clean up previous attributes just in case
-        root.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-
+        document.documentElement.setAttribute('data-theme', theme);
+        try {
+            window.localStorage.setItem(STORAGE_KEY, theme);
+        } catch {
+            // the preference simply won't persist
+        }
     }, [theme]);
 
     const toggleTheme = () => {
-        setTheme((prev) => {
-            if (prev === 'dark') return 'light';
-            if (prev === 'light') return 'forest';
-            if (prev === 'forest') return 'clay';
-            return 'dark'; // clay -> dark
-        });
+        setTheme((prev) => THEMES[(THEMES.indexOf(prev) + 1) % THEMES.length]);
     };
 
     return (
@@ -45,12 +42,4 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
             {children}
         </ThemeContext.Provider>
     );
-};
-
-export const useTheme = () => {
-    const context = useContext(ThemeContext);
-    if (context === undefined) {
-        throw new Error('useTheme must be used within a ThemeProvider');
-    }
-    return context;
 };
