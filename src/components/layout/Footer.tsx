@@ -15,7 +15,7 @@ const Footer = () => {
             <div className="container mx-auto px-6 text-center">
                 <div className="mb-8">
                     <h2 className="text-2xl font-heading font-bold text-white mb-2">REZA KHORSHIDI</h2>
-                    <p className="text-on-surface-muted">Developer | Actor | Barista</p>
+                    <p className="text-on-surface-muted">Developer | Actor | Client Advisor</p>
                 </div>
 
                 <div className="flex justify-center space-x-6 mb-8">

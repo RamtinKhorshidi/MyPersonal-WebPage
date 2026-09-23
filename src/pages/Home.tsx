@@ -48,12 +48,12 @@ const Home = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        className="h-16 mb-8"
+                        className="mb-8"
                     >
-                        <p className="text-xl md:text-4xl text-gray-300 font-light flex flex-wrap justify-center gap-2">
-                            <span className="text-primary font-semibold">Code Performer</span>
-                            <span className="hidden md:inline mx-3 text-gray-600">|</span>
-                            <span className="block md:inline mt-1 md:mt-0">Front-End Developer</span>
+                        <p className="text-xl md:text-4xl text-primary font-semibold">Code Performer</p>
+                        <p className="mt-2 text-lg md:text-2xl text-gray-300 font-light">
+                            Front-End Developer <span className="text-gray-500" aria-hidden="true">·</span> Actor{' '}
+                            <span className="text-gray-500" aria-hidden="true">·</span> Client Advisor at RBC
                         </p>
                     </motion.div>
 
@@ -63,8 +63,9 @@ const Home = () => {
                         transition={{ delay: 0.6, duration: 0.8 }}
                         className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
                     >
-                        Blending the logic of engineering with the soul of performance.
-                        I build immersive web experiences that don't just function—they <span className="text-white font-medium">perform</span>.
+                        Blending the logic of engineering with the soul of performance. By day I help clients at RBC,
+                        where finance meets technology. Beyond the branch, I build web experiences that don't just
+                        function—they <span className="text-white font-medium">perform</span>.
                     </motion.p>
 
                     <motion.div
