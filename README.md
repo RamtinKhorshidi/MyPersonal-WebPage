@@ -1,56 +1,70 @@
 # Reza Khorshidi - Personal Portfolio
 
-A cinematic, high-performance personal portfolio website showcasing my dual journey as a Front-End Developer and Actor/Performer (performing as Ramtin). Built with modern web technologies to deliver an immersive usage experience.
+A cinematic personal portfolio for Reza (Ramtin) Khorshidi: front-end developer, award-winning actor, and client advisor at RBC, working where finance meets technology.
 
-## 🚀 Live Demo
+## 🚀 Live Site
 [rezakhorshidi.com](https://rezakhorshidi.com/)
 
 ## 🛠 Tech Stack
-- **Core**: React, TypeScript, Vite
-- **Styling**: Tailwind CSS v4 (Custom Configuration)
-- **Animation**: Framer Motion (Complex transitions, Parallax, sequenced reveals)
-- **Routing**: React Router DOM (with `AnimatePresence` page transitions)
-- **State**: React Context API (Theme Management)
+- **Core**: React 19, TypeScript (strict), Vite
+- **Styling**: Tailwind CSS v4, configured in `src/index.css` with CSS-variable themes
+- **Animation**: Framer Motion (page transitions, parallax, staggered reveals), Splitting.js
+- **Routing**: React Router with clean URLs, prerendered per page for GitHub Pages
+- **Hosting**: GitHub Pages with a custom domain (`public/CNAME`)
 
-## ✨ Key Features
+## ✨ Features
 
-### 🎨 Dynamic Theme System
-- **Dual Aesthetic**: Switches seamlessly between two professionally curated palettes.
-  - **Dark Mode (Default)**: Federal Blue (`#0e0e52`), Pumpkin (`#fe7f2d`), and Egyptian Blue (`#28369e`).
-  - **Light Mode**: Warm Cream, Madder Red, and Sunset Gold.
-- **Persistent Preference**: Remembers user choice via `localStorage` and respects system default.
-- **Animated Toggle**: Custom morphing Sun/Moon animation with particle effects (stars/clouds).
+### 🎨 Four themes
+Forest (default), Orchid, Dark and Clay, cycled from the navbar toggle and remembered per visitor. Every theme defines `on-surface-muted` / `on-surface-accent` text colours tuned to at least 4.5:1 contrast on its card colour.
 
-### 🎬 Cinematic Motion
-- **Page Transitions**: Smooth cross-dissolve and blur effects between routes.
-- **Scroll Parallax**: Background gradients move at different speeds for depth.
-- **Staggered Reveals**: Content cascades in elegantly rather than loading abruptly.
-- **Custom Typography Animation**: "Creative Journey" title features a Splitting.js integration with physics-based SVG interactions.
-- **3D Flip Toggles**: Custom CSS 3D transforms for the theme switcher.
-- **Ghost Spirit Animation**: A playful, CSS-only floating spirit that traverses the homepage with randomized vertical positioning and blend-mode interactions.
+### 🎬 Motion
+- Page transitions with exit and enter animations, and a hero text reveal.
+- Scroll-triggered reveals, parallax background spotlights, and a Splitting.js "Creative Journey" title.
+- Respects the operating system's reduce-motion setting.
 
-### 📱 Responsive Design
-- Fully responsive layout optimized for mobile, tablet, and desktop.
-- Adaptive navigation with mobile drawer menu and blurry backdrop support.
-- **Expanding Gallery**: An interactive, accordion-style image gallery in the Acting section that expands cards on click/tap, optimized for both desktop (horizontal) and mobile (vertical) layouts.
-- **Showcase Cards**: Dedicated "Foreign Homeland" feature card with interactive hover states.
+### 🔎 SEO and link previews
+- `scripts/prerender-routes.mjs` runs after `vite build` and writes `developer.html`, `about.html`, etc. from `src/seo/routes.json`, so every page has its own title, description and canonical URL and returns a 200 on GitHub Pages. It also writes `404.html` and `sitemap.xml`.
+- Open Graph and Twitter card tags with a 1200x630 preview image (`public/og-image.jpg`), and schema.org `Person` structured data.
+- Old hash links (`/#/about`) redirect to the clean URL.
 
-### ⚡ Performance
-- **Image Optimization**: Automated script (`scripts/optimize-images.cjs`) converts assets to WebP and resizes them.
-- **Lazy Loading**: Integrated throughout the gallery for faster initial page loads.
+### 📱 Pages
+- **Home**: hero and calls to action.
+- **Developer**: tech stack, certificates, projects (code and live links).
+- **Creative**: acting (expanding gallery, recent roles, *Foreign Homeland*), music, barista.
+- **About**: career timeline and languages.
+- **Contact**: contact details and a message form.
 
 ## 📦 Usage
 
-### Development
 ```bash
 npm install
-npm run dev
+npm run dev       # local development server
+npm run lint      # ESLint
+npm run build     # type-check, build, and prerender pages into dist/
+npm run preview   # serve the production build locally
+npm run deploy    # build and publish dist/ to the gh-pages branch
 ```
 
-### Build
-```bash
-npm run build
+### Contact form
+The form sends through [EmailJS](https://www.emailjs.com) when these variables are set. Copy `.env.example` to `.env.local` (git-ignored) and fill in:
+
 ```
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
+```
+
+Without them, the form opens the visitor's email app with the message pre-filled.
+
+### Adding a page
+Add the route in `src/App.tsx` and its title and description in `src/seo/routes.json`; the build then prerenders it and adds it to the sitemap.
+
+### Optimizing photos
+```bash
+npm install --no-save sharp
+node scripts/optimize-images.cjs src/assets/images/photo.jpg
+```
+Writes a WebP (max 1600px wide) next to the original.
 
 ## 📄 License
-This project is open source and available under the [MIT License](LICENSE).
+No license file has been added yet, so all rights are reserved by default.
