@@ -1,13 +1,15 @@
 import type { Variants } from 'framer-motion';
 
-// Smooth Page Transitions
+// Smooth Page Transitions.
+// All variants share the labels hidden/show/exit so children inherit the
+// parent's state; a mismatched label silently disables the child animation.
 export const pageVariants: Variants = {
-    initial: {
+    hidden: {
         opacity: 0,
         y: 10,
         filter: 'blur(8px)',
     },
-    animate: {
+    show: {
         opacity: 1,
         y: 0,
         filter: 'blur(0px)',
@@ -62,9 +64,9 @@ export const hoverScale = {
 // Text Reveal (Character/Word stagger)
 export const textReveal: Variants = {
     hidden: { y: "100%", opacity: 0 },
-    visible: {
+    show: {
         y: 0,
         opacity: 1,
-        transition: { duration: 0.8, ease: [0.6, 0.01, -0.05, 0.95] }
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
     }
 };

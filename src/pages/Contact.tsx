@@ -39,8 +39,8 @@ const Contact = () => {
         <motion.div
             className="container mx-auto px-6 py-12"
             variants={pageVariants}
-            initial="initial"
-            animate="animate"
+            initial="hidden"
+            animate="show"
             exit="exit"
         >
             <motion.div variants={fadeInUp} className="text-center mb-16">

@@ -1,7 +1,8 @@
 import { Suspense, lazy } from 'react';
+import type { ReactNode } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 
 // Lazy load pages for performance optimization
@@ -18,20 +19,26 @@ const PageLoader = () => (
   </div>
 );
 
+const Page = ({ children }: { children: ReactNode }) => (
+  <Suspense fallback={<PageLoader />}>{children}</Suspense>
+);
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
+  // AnimatePresence must wrap the keyed Routes directly so the outgoing page
+  // runs its exit animation. Each page gets its own Suspense boundary below
+  // AnimatePresence, so a lazy page loading never suspends the presence tree
+  // in the middle of a transition.
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<PageLoader />}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/developer" element={<Developer />} />
-          <Route path="/creative" element={<Creative />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Suspense>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Page><Home /></Page>} />
+        <Route path="/developer" element={<Page><Developer /></Page>} />
+        <Route path="/creative" element={<Page><Creative /></Page>} />
+        <Route path="/about" element={<Page><About /></Page>} />
+        <Route path="/contact" element={<Page><Contact /></Page>} />
+      </Routes>
     </AnimatePresence>
   );
 };
@@ -39,11 +46,13 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <Layout>
-          <AnimatedRoutes />
-        </Layout>
-      </Router>
+      <MotionConfig reducedMotion="user">
+        <Router>
+          <Layout>
+            <AnimatedRoutes />
+          </Layout>
+        </Router>
+      </MotionConfig>
     </ThemeProvider>
   );
 }

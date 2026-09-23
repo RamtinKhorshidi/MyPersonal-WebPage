@@ -14,8 +14,8 @@ const Home = () => {
         <motion.div
             className="min-h-[calc(100vh-80px)] flex flex-col justify-center relative overflow-hidden"
             variants={pageVariants}
-            initial="initial"
-            animate="animate"
+            initial="hidden"
+            animate="show"
             exit="exit"
         >
             {/* Background Gradient Spotlights with Parallax */}
